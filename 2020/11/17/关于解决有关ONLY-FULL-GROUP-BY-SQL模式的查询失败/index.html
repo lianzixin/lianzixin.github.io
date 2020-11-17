@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+
+
+    <!-- meta -->
+
+
+<title>关于解决有关ONLY_FULL_GROUP_BY SQL模式的查询失败 | lianzixin</title>
+
+
+    <meta name="keywords" content="solve-way">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="本地、测试无问题，发到线上，突然一堆报错。 报错信息 知识背景首先介绍一下 SQL_MODE 的概念MYSQL 可以使用不同的 SQL 模式来工作，这些模式会影响和验证检查的语法。而这些模式通过设置 SQL_MODE 变量来实现模式的转化MYSQL 旧版本设计在“宽恕模式”下工作。用户可以编写任何类型的语法有效查询，而不必考虑 SQL 标准合规化或语义规则。为了往更好的 SQL 标准靠近，MYSQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于解决有关ONLY_FULL_GROUP_BY SQL模式的查询失败">
+<meta property="og:url" content="http://lianzixin.github.io/2020/11/17/%E5%85%B3%E4%BA%8E%E8%A7%A3%E5%86%B3%E6%9C%89%E5%85%B3ONLY-FULL-GROUP-BY-SQL%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%A4%B1%E8%B4%A5/index.html">
+<meta property="og:site_name" content="lianzixin">
+<meta property="og:description" content="本地、测试无问题，发到线上，突然一堆报错。 报错信息 知识背景首先介绍一下 SQL_MODE 的概念MYSQL 可以使用不同的 SQL 模式来工作，这些模式会影响和验证检查的语法。而这些模式通过设置 SQL_MODE 变量来实现模式的转化MYSQL 旧版本设计在“宽恕模式”下工作。用户可以编写任何类型的语法有效查询，而不必考虑 SQL 标准合规化或语义规则。为了往更好的 SQL 标准靠近，MYSQ">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-17T13:22:44.000Z">
+<meta property="article:modified_time" content="2020-11-17T13:22:47.768Z">
+<meta property="article:author" content="lianzixin">
+<meta property="article:tag" content="solve-way">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">lianzixin</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        关于解决有关ONLY_FULL_GROUP_BY SQL模式的查询失败
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/11/" class="post-meta__date button">
+    2020-11-17
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/mysql/" class="button">mysql</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <p>本地、测试无问题，发到线上，突然一堆报错。</p>
+<h1 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h1><p><img src="" alt="mysql报错信息"></p>
+<h1 id="知识背景"><a href="#知识背景" class="headerlink" title="知识背景"></a>知识背景</h1><p>首先介绍一下 <strong>SQL_MODE</strong> 的概念<br>MYSQL 可以使用不同的 SQL 模式来工作，这些模式会影响和验证检查的语法。而这些模式通过设置 SQL_MODE 变量来实现模式的转化<br>MYSQL 旧版本设计在“宽恕模式”下工作。用户可以编写任何类型的语法有效查询，而不必考虑 SQL 标准合规化或语义规则。<br>为了往更好的 SQL 标准靠近，MYSQL 在 5.7.5 开始，默认包含以下模式</p>
+<ul>
+<li>ONLY_FULL_GROUP_BY</li>
+<li>STRICT_TRANS_TABLES</li>
+<li>NO_ZERO_IN_DATE</li>
+<li>NO_ZERO_DATE</li>
+<li>ERROR_FOR_DIVISION_BY_ZERO</li>
+<li>NO_AUTO_CREATE_USER</li>
+<li>NO_ENGINE_SUBSTITUTION。</li>
+</ul>
+<h1 id="报错原因"><a href="#报错原因" class="headerlink" title="报错原因"></a>报错原因</h1><p>由于版本的问题，在进行数据库的迁移时，当使用了 5.7.5 高级版本时，数据库的查询模式将会自动设置为 ONLY_FULL_GROUP_BY，这就是本次报错的主要原因。</p>
+<h1 id="ONLY-FULL-GROUP-BY"><a href="#ONLY-FULL-GROUP-BY" class="headerlink" title="ONLY_FULL_GROUP_BY"></a>ONLY_FULL_GROUP_BY</h1><p>什么是 ONLY_FULL_GROUP_BY，为什么要 MYSQL 要引入这个特性呢？<br>原来 SQL-92 和更早版本不允许选择列表，HAVING 条件或 ORDER BY 列表引用该 GROUP BY 子句中未命名的未聚合列的查询。<br>而 MySQL 5.7.5 及更高版本实现对功能依赖性的检测。如果 SQL 模式启用了 ONLY_FULL_GROUP_BY（默认情况下为SQL模式），则 MySQL 拒绝选择列表，HAVING 条件或 ORDER BY 列表引用 GROUP BY 未在该子句中命名或在功能上不依赖于它们的未聚合列的查询。<br>换句话说，如果想要在开启了 ONLY_FULL_GROUP_BY 模式下使用 Group by 语句，则 select 后的列必须出现在 group by 后或者使用了聚合函数，类似 min、max、sum。<br>MYSQL 引入该特性就是为了朝着更好的标准迁移，考虑到兼容问题，MYSQL 也引入了一个函数 ANY_VALUE()，来抑制使用了 ONLY_FULL_GROUP_BY 值被 MYSQL 拒绝<br><img src="" alt="SQL 演示"></p>
+<h1 id="SQL-模式的操作"><a href="#SQL-模式的操作" class="headerlink" title="SQL 模式的操作"></a>SQL 模式的操作</h1><p>运行时更改 SQL 模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set global sql_mode &#x3D; &#39;modes&#39;; &#x2F;&#x2F;更改全局 SQL 模式</span><br><span class="line">set session sql_mode &#x3D; &#39;modes&#39;; &#x2F;&#x2F;更改会话 SQL 模式</span><br></pre></td></tr></table></figure>
+<p>查询当前全局或会话 sql_mode </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select @@global.sql_mode; &#x2F;&#x2F;查询全局模式</span><br><span class="line">select @@session.sql_mode; &#x2F;&#x2F;查询会话模式</span><br></pre></td></tr></table></figure>
+
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ul>
+<li>对于不符合要求的列，使用 ANY_VALUE 函数进行包裹，这样带来的问题就是版本不兼容，低于 5.7.5 就没有这个函数，该报错还是会报错。</li>
+<li>直接设置全局模式，把 ONLY_FULL_GROUP_BY 去掉，这样带来的问题是会影响其他数据库，影响范围太大，DBA 一般也不会通过</li>
+<li>直接设置会话模式，一般来说，后端使用 Mybatis 框架，每条语句就是一个会话，而 Mybatis 无法同时执行两条不同类型的语句（set 与 select），这条路直接就走不通了，无法实现</li>
+<li>在 mysql 的安装目录下，或 my.cnf 文件( windows 系统是 my.ini 文件)，新增 sql_mode = ‘modes’，这种方式更不可能，生产数据库不能随便乱动</li>
+<li>JDBC 中设置 SESSION 变量，使用 <strong>sessionVariables</strong>。 例子如下，每次开启会话前，手动设置 sql_mode ，完美符合预期</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdbc:DBTYPE&#x2F;&#x2F;IP:PORT&#x2F;DBNAME?**sessionVariables&#x3D;sql_mode&#x3D;&#39;modes&#39;**</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>MYSQL 开启 ONLY_FULL_GROUP_BY，是为了逼迫 SQL 语句更好地符合标准，但是为了兼容，只能手动关闭该特性，或者得考虑 SQL 语句的重构了。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/group-by-handling.html">ONLY_FULL_GROUP_BY 官方文档介绍</a><br><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html">SQL_MODE 官方文档介绍</a></p>
+
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-11-17
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+        <a href="/categories/mysql/" class="post-cats__link button">mysql</a>
+    
+    
+        <a href="/tags/solve-way/" class="post-tags__link button"># solve-way</a>
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/11/17/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            编译原理书籍推荐
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2020&nbsp;-&nbsp;2020 <a href="/">lianzixin</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>

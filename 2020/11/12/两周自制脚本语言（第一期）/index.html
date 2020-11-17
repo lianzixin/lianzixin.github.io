@@ -29,17 +29,17 @@
 
     <!-- OpenGraph -->
  
-    <meta name="description" content="&amp;#x57FA;&amp;#x7840;&amp;#x5165;&amp;#x95E8;&amp;#x673A;&amp;#x5668;&amp;#x8BED;&amp;#x8A00;&amp;#x4E0E;&amp;#x6C47;&amp;#x7F16;&amp;#x8BED;&amp;#x8A00;&amp;#x673A;&amp;#x5668;&amp;#x8BED;&amp;#x8A00;&amp;#xFF1A;&amp;#x7528;&amp;#x4E8C;&amp;#x8FDB;&amp;#x5236;&amp;#x4EE3;&amp;#x7801;&amp;#x8868;">
+    <meta name="description" content="基础入门机器语言与汇编语言的区别 机器语言：用二进制代码表示的计算机能直接识别和执行的一种机器指令系统的集合.什么是二进制代码呢，讲个经典的例子就明白了。我小时候买了一台电脑，操作系统都没有，这时候我的哥们过来了，见状，叫我拿个电话机给他，只见他接入电脑后连续敲了 3 个小时的 0 1 两个键，开始发现电脑上已经可以运行 window xp。 汇编语言：实际上为机器指令便于记忆的书写格式，汇编语言">
 <meta property="og:type" content="article">
 <meta property="og:title" content="两周自制脚本语言（第一期）">
 <meta property="og:url" content="http://lianzixin.github.io/2020/11/12/%E4%B8%A4%E5%91%A8%E8%87%AA%E5%88%B6%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%EF%BC%88%E7%AC%AC%E4%B8%80%E6%9C%9F%EF%BC%89/index.html">
 <meta property="og:site_name" content="lianzixin">
-<meta property="og:description" content="&amp;#x57FA;&amp;#x7840;&amp;#x5165;&amp;#x95E8;&amp;#x673A;&amp;#x5668;&amp;#x8BED;&amp;#x8A00;&amp;#x4E0E;&amp;#x6C47;&amp;#x7F16;&amp;#x8BED;&amp;#x8A00;&amp;#x673A;&amp;#x5668;&amp;#x8BED;&amp;#x8A00;&amp;#xFF1A;&amp;#x7528;&amp;#x4E8C;&amp;#x8FDB;&amp;#x5236;&amp;#x4EE3;&amp;#x7801;&amp;#x8868;">
+<meta property="og:description" content="基础入门机器语言与汇编语言的区别 机器语言：用二进制代码表示的计算机能直接识别和执行的一种机器指令系统的集合.什么是二进制代码呢，讲个经典的例子就明白了。我小时候买了一台电脑，操作系统都没有，这时候我的哥们过来了，见状，叫我拿个电话机给他，只见他接入电脑后连续敲了 3 个小时的 0 1 两个键，开始发现电脑上已经可以运行 window xp。 汇编语言：实际上为机器指令便于记忆的书写格式，汇编语言">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://lianzixin.github.io/2020/11/12/%E4%B8%A4%E5%91%A8%E8%87%AA%E5%88%B6%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%EF%BC%88%E7%AC%AC%E4%B8%80%E6%9C%9F%EF%BC%89/%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%99%A8%E5%86%85%E9%83%A8%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png">
 <meta property="og:image" content="http://lianzixin.github.io/2020/11/12/%E4%B8%A4%E5%91%A8%E8%87%AA%E5%88%B6%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%EF%BC%88%E7%AC%AC%E4%B8%80%E6%9C%9F%EF%BC%89/Token%E7%B1%BB.png">
 <meta property="article:published_time" content="2020-11-12T06:34:20.000Z">
-<meta property="article:modified_time" content="2020-11-12T07:12:30.077Z">
+<meta property="article:modified_time" content="2020-11-17T12:53:09.158Z">
 <meta property="article:author" content="lianzixin">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://lianzixin.github.io/2020/11/12/%E4%B8%A4%E5%91%A8%E8%87%AA%E5%88%B6%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%EF%BC%88%E7%AC%AC%E4%B8%80%E6%9C%9F%EF%BC%89/%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%99%A8%E5%86%85%E9%83%A8%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png">
@@ -145,55 +145,69 @@
 <article class="post content-card">
     <div class="post__header"></div>
     <div class="post__content">
-        <h1 id="&#x57FA;&#x7840;&#x5165;&#x95E8;"><a href="#&#x57FA;&#x7840;&#x5165;&#x95E8;" class="headerlink" title="&#x57FA;&#x7840;&#x5165;&#x95E8;"></a>&#x57FA;&#x7840;&#x5165;&#x95E8;</h1><h2 id="&#x673A;&#x5668;&#x8BED;&#x8A00;&#x4E0E;&#x6C47;&#x7F16;&#x8BED;&#x8A00;"><a href="#&#x673A;&#x5668;&#x8BED;&#x8A00;&#x4E0E;&#x6C47;&#x7F16;&#x8BED;&#x8A00;" class="headerlink" title="&#x673A;&#x5668;&#x8BED;&#x8A00;&#x4E0E;&#x6C47;&#x7F16;&#x8BED;&#x8A00;"></a>&#x673A;&#x5668;&#x8BED;&#x8A00;&#x4E0E;&#x6C47;&#x7F16;&#x8BED;&#x8A00;</h2><p>&#x673A;&#x5668;&#x8BED;&#x8A00;&#xFF1A;&#x7528;<strong>&#x4E8C;&#x8FDB;&#x5236;</strong>&#x4EE3;&#x7801;&#x8868;&#x793A;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x80FD;&#x76F4;&#x63A5;&#x8BC6;&#x522B;&#x548C;&#x6267;&#x884C;&#x7684;&#x4E00;&#x79CD;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x7CFB;&#x7EDF;&#x7684;&#x96C6;&#x5408;.<br>&#x6C47;&#x7F16;&#x8BED;&#x8A00;&#xFF1A;&#x5B9E;&#x9645;&#x4E0A;&#x4E3A;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x4FBF;&#x4E8E;&#x8BB0;&#x5FC6;&#x7684;&#x4E66;&#x5199;&#x683C;&#x5F0F;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//&#x4F8B;&#x5B50;</span><br><span class="line">&#x64CD;&#x4F5C;&#xFF1A;&#x5BC4;&#x5B58;&#x5668; bx &#x7684;&#x5185;&#x5BB9;&#x9001;&#x5230; ax &#x4E2D;</span><br><span class="line">&#x673A;&#x5668;&#x6307;&#x4EE4;&#xFF1A; 1000 1001 1101 1000 &#x2192; 89D8H</span><br><span class="line">&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#xFF1A; mov ax, bx</span><br></pre></td></tr></table></figure>
+        <h1 id="基础入门"><a href="#基础入门" class="headerlink" title="基础入门"></a>基础入门</h1><h2 id="机器语言与汇编语言的区别"><a href="#机器语言与汇编语言的区别" class="headerlink" title="机器语言与汇编语言的区别"></a>机器语言与汇编语言的区别</h2><ul>
+<li>机器语言：用<strong>二进制</strong>代码表示的计算机能直接识别和执行的一种机器指令系统的集合.<br>什么是二进制代码呢，讲个经典的例子就明白了。<br>我小时候买了一台电脑，操作系统都没有，这时候我的哥们过来了，见状，叫我拿个电话机给他，只见他接入电脑后连续敲了 3 个小时的 0 1 两个键，开始发现电脑上已经可以运行 window xp。</li>
+<li>汇编语言：实际上为机器指令便于记忆的书写格式，汇编语言将 01 指令进行编码，此时程序员就不必再对着 01 字符串发呆，从而更容易进行编码了。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;例子</span><br><span class="line">操作：寄存器 bx 的内容送到 ax 中</span><br><span class="line">机器指令： 1000 1001 1101 1000 → 89D8H ( 16 进制)</span><br><span class="line">汇编指令： mov ax, bx</span><br></pre></td></tr></table></figure>
 
-<h2 id="&#x89E3;&#x91CA;&#x5668;&#x4E0E;&#x7F16;&#x8BD1;&#x5668;"><a href="#&#x89E3;&#x91CA;&#x5668;&#x4E0E;&#x7F16;&#x8BD1;&#x5668;" class="headerlink" title="&#x89E3;&#x91CA;&#x5668;&#x4E0E;&#x7F16;&#x8BD1;&#x5668;"></a>&#x89E3;&#x91CA;&#x5668;&#x4E0E;&#x7F16;&#x8BD1;&#x5668;</h2><p>&#x89E3;&#x91CA;&#x5668;&#xFF1A;&#x76F4;&#x63A5;<strong>&#x6267;&#x884C;</strong>&#x7528;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x7684;&#x6307;&#x4EE4;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x65E0;&#x9700;&#x5C06;&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x6210;&#x673A;&#x5668;&#x7801;&#xFF0C;&#x4E5F;&#x53EF;&#x770B;&#x6210;&#x865A;&#x62DF;&#x673A;<br>&#x7F16;&#x8BD1;&#x5668;&#xFF1A;&#x628A;&#x6E90;&#x4EE3;&#x7801;<strong>&#x8F6C;&#x6362;</strong>&#x6210;&#x4F4E;&#x7EA7;&#x8BED;&#x8A00;&#x7684;&#x7A0B;&#x5E8F;</p>
-<h2 id="&#x8BED;&#x8A00;&#x5904;&#x7406;&#x5668;&#x7684;&#x7ED3;&#x6784;"><a href="#&#x8BED;&#x8A00;&#x5904;&#x7406;&#x5668;&#x7684;&#x7ED3;&#x6784;" class="headerlink" title="&#x8BED;&#x8A00;&#x5904;&#x7406;&#x5668;&#x7684;&#x7ED3;&#x6784;"></a>&#x8BED;&#x8A00;&#x5904;&#x7406;&#x5668;&#x7684;&#x7ED3;&#x6784;</h2><p>&#x5BF9;&#x4E8E;&#x89E3;&#x91CA;&#x5668;&#x8FD8;&#x662F;&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x8BED;&#x8A00;&#x5904;&#x7406;&#x5668;&#x524D;&#x534A;&#x90E8;&#x5206;&#x90FD;&#x5927;&#x540C;&#x5C0F;&#x5F02;&#xFF0C;&#x5177;&#x4F53;&#x64CD;&#x4F5C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<h2 id="解释器与编译器"><a href="#解释器与编译器" class="headerlink" title="解释器与编译器"></a>解释器与编译器</h2><ul>
+<li>解释器：直接<strong>执行</strong>用编程语言编写的指令的程序，无需将代码编译成机器码，也可看成虚拟机</li>
+<li>编译器：把源代码<strong>转换</strong>成低级语言的程序，此时的低级语言不一定为机器语言，也可能为汇编语言</li>
+</ul>
+<h2 id="语言处理器的结构"><a href="#语言处理器的结构" class="headerlink" title="语言处理器的结构"></a>语言处理器的结构</h2><p>对于解释器还是编译器，语言处理器前半部分都大同小异，具体操作如下：</p>
 <ol>
-<li>&#x5BF9;&#x6E90;&#x4EE3;&#x7801;&#x8FDB;&#x884C;<strong>&#x8BCD;&#x6CD5;&#x5206;&#x6790;</strong>&#xFF0C;&#x5207;&#x5272;&#x6210;&#x5B57;&#x7B26;&#x4E32;&#x5355;&#x5143;&#xFF0C;&#x79F0;&#x4E3A;&#x5355;&#x8BCD;</li>
-<li>&#x5904;&#x7406;&#x5668;&#x6267;&#x884C;<strong>&#x8BED;&#x6CD5;&#x5206;&#x6790;</strong>&#xFF0C;&#x5C06;&#x5355;&#x8BCD;&#x6392;&#x5217;&#x8F6C;&#x6362;&#x4E3A;&#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x6811;</li>
-<li>&#x7F16;&#x8BD1;&#x5668;&#xFF1A;&#x5C06;&#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x6811;&#x8F6C;&#x6362;&#x4E3A;&#x5176;&#x4ED6;&#x8BED;&#x8A00;</li>
-<li>&#x89E3;&#x91CA;&#x5668;&#xFF1A;&#x4E00;&#x8FB9;&#x5206;&#x6790;&#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x4E66;&#xFF0C;&#x4E00;&#x8FB9;&#x6267;&#x884C;&#x8FD0;&#x7B97;<br><img src="/2020/11/12/%E4%B8%A4%E5%91%A8%E8%87%AA%E5%88%B6%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%EF%BC%88%E7%AC%AC%E4%B8%80%E6%9C%9F%EF%BC%89/%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%99%A8%E5%86%85%E9%83%A8%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png"></li>
+<li>对源代码进行<strong>词法分析</strong>，切割成字符串单元，称为单词</li>
+<li>处理器执行<strong>语法分析</strong>，将单词排列转换为抽象语法树</li>
+<li>编译器：将抽象语法树转换为其他语言</li>
+<li>解释器：一边分析抽象语法书，一边执行运算<br><img src="%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%99%A8%E5%86%85%E9%83%A8%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png"></li>
 </ol>
-<h1 id="&#x8BBE;&#x8BA1;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x8BED;&#x8A00;"><a href="#&#x8BBE;&#x8BA1;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x8BED;&#x8A00;" class="headerlink" title="&#x8BBE;&#x8BA1;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x8BED;&#x8A00;"></a>&#x8BBE;&#x8BA1;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x8BED;&#x8A00;</h1><h2 id="&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x8BED;&#x8A00;&#x9700;&#x8981;&#x5177;&#x5907;&#x7684;&#x529F;&#x80FD;"><a href="#&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x8BED;&#x8A00;&#x9700;&#x8981;&#x5177;&#x5907;&#x7684;&#x529F;&#x80FD;" class="headerlink" title="&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x8BED;&#x8A00;&#x9700;&#x8981;&#x5177;&#x5907;&#x7684;&#x529F;&#x80FD;"></a>&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x8BED;&#x8A00;&#x9700;&#x8981;&#x5177;&#x5907;&#x7684;&#x529F;&#x80FD;</h2><ul>
-<li>&#x6574;&#x6570;&#x56DB;&#x5219;&#x8FD0;&#x7B97;</li>
-<li>&#x5B57;&#x7B26;&#x4E32;&#x5904;&#x7406;</li>
-<li>&#x5BF9;&#x53D8;&#x91CF;&#x63D0;&#x4F9B;&#x652F;&#x6301;</li>
-<li>&#x63A7;&#x5236;&#x6D41;&#x8BED;&#x53E5;</li>
-<li>&#x63D0;&#x4F9B;&#x6CE8;&#x91CA;</li>
-<li>&#x5FAA;&#x73AF;&#x6D41;&#x8BED;&#x53E5;</li>
-<li>&#x62EC;&#x53F7;&#x95EE;&#x9898;<ul>
-<li>&#x7701;&#x7565; if &#x3001; while &#x8868;&#x8FBE;&#x5F0F;&#x4E24;&#x4FA7;&#x62EC;&#x53F7;</li>
+<h1 id="设计程序设计语言"><a href="#设计程序设计语言" class="headerlink" title="设计程序设计语言"></a>设计程序设计语言</h1><h2 id="程序设计语言需要具备的功能"><a href="#程序设计语言需要具备的功能" class="headerlink" title="程序设计语言需要具备的功能"></a>程序设计语言需要具备的功能</h2><ul>
+<li>整数四则运算</li>
+<li>字符串处理</li>
+<li>对变量提供支持</li>
+<li>控制流语句</li>
+<li>提供注释</li>
+<li>循环流语句</li>
+<li>括号问题<ul>
+<li>省略 if 、 while 表达式两侧括号</li>
 </ul>
 </li>
-<li>&#x53E5;&#x5C3E;&#x5206;&#x53F7;&#x7684;&#x95EE;&#x9898;&#xFF1A;<ul>
-<li>&#x540C;&#x4E00;&#x884C;&#x5199;&#x591A;&#x53E5;&#x8BED;&#x53E5;&#xFF0C;&#x5404;&#x5C40;&#x53E5;&#x5C3E;&#x5206;&#x53F7;&#x5219;&#x4E0D;&#x80FD;&#x7701;&#x7565;</li>
-<li>&#x5982;&#x679C;&#x53E5;&#x5C3E;&#x76F4;&#x63A5;&#x8DDF;&#x7740; } &#xFF0C;&#x5C31;&#x4E0D;&#x5FC5;&#x4F7F;&#x7528;&#x5206;&#x53F7;</li>
+<li>句尾分号的问题：<ul>
+<li>同一行写多句语句，各局句尾分号则不能省略</li>
+<li>如果句尾直接跟着 } ，就不必使用分号</li>
 </ul>
 </li>
 </ul>
-<h1 id="&#x5206;&#x5272;&#x5355;&#x8BCD;"><a href="#&#x5206;&#x5272;&#x5355;&#x8BCD;" class="headerlink" title="&#x5206;&#x5272;&#x5355;&#x8BCD;"></a>&#x5206;&#x5272;&#x5355;&#x8BCD;</h1><p>&#x8BED;&#x8A00;&#x5904;&#x7406;&#x5668;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#x662F;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x5668;&#xFF08;lexical analyzer&#xFF09;&#xFF0C;&#x8BED;&#x8A00;&#x5904;&#x7406;&#x5668;&#x901A;&#x5E38;&#x5C06;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x5B57;&#x7B26;&#x4EE5;&#x5355;&#x8BCD;&#x4E3A;&#x5355;&#x4F4D;&#x8FDB;&#x884C;&#x5206;&#x7EC4;&#xFF0C;&#x5207;&#x5272;&#x6210;&#x591A;&#x4E2A;&#x5B50;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6B64;&#x8FC7;&#x7A0B;&#x79F0;&#x4E3A;&#x8BCD;&#x6CD5;&#x5206;&#x6790;</p>
-<h2 id="Token-&#x5BF9;&#x8C61;"><a href="#Token-&#x5BF9;&#x8C61;" class="headerlink" title="Token &#x5BF9;&#x8C61;"></a>Token &#x5BF9;&#x8C61;</h2><p>&#x4F8B;&#x5982;&#xFF0C;&#x4E0B;&#x9762;&#x4E3A;&#x7A0B;&#x5E8F;&#x7684;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;<br><code>while i &lt; 10 {</code><br>&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x4F1A;&#x628A;&#x5B83;&#x62C6;&#x5206;&#x4E3A;&#x4E0B;&#x9762;&#x7684;&#x5B57;&#x7B26;&#x4E32;<br><code>&quot;while&quot; &quot;i&quot; &quot;&lt;&quot; &quot;10&quot; &quot;{&quot;</code><br>&#x4EE3;&#x7801;&#x88AB;&#x5206;&#x5272;&#x6210; 5 &#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4EBA;&#x4EEC;&#x5C06;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x7684;&#x7ED3;&#x679C;&#x79F0;&#x4E3A;&#x5355;&#x8BCD;&#xFF08;token&#xFF09;<br>&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x7B5B;&#x9009;&#x51FA;&#x89E3;&#x91CA;&#x7A0B;&#x5E8F;&#x4E0E;&#x6267;&#x884C;&#x7684;&#x5FC5;&#x9700;&#x90E8;&#x5206;&#x3002;&#x5355;&#x8BCD;&#x4E4B;&#x95F4;&#x7684;&#x7A7A;&#x767D;&#x6216;&#x6CE8;&#x91CA;&#x4F1A;&#x5728;&#x8FD9;&#x4E00;&#x9636;&#x6BB5;&#x88AB;&#x53BB;&#x9664;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x4F8B;&#x5982;&#xFF1A;i = i + 1 // increment</span><br><span class="line">&#x5904;&#x7406;&#x540E;&#xFF1A;i=i+1</span><br></pre></td></tr></table></figure>
-<p>&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x5668;&#x5C06;&#x6E90;&#x4EE3;&#x7801;&#x89C6;&#x4F5C;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5E76;&#x5C06;&#x5B83;&#x5206;&#x5272;&#x4E3A;&#x82E5;&#x5E72;&#x5355;&#x8BCD;&#x3002;&#x5206;&#x5272;&#x540E;&#x5F97;&#x5230;&#x7684;&#x5355;&#x8BCD;&#x4E0D;&#x518D;&#x4F7F;&#x7528; String &#x5BF9;&#x8C61;&#x8868;&#x793A;&#xFF0C;&#x4F7F;&#x7528; Token &#x5BF9;&#x8C61;&#xFF0C;&#x5177;&#x4F53;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#x3002;<br><img src="/2020/11/12/%E4%B8%A4%E5%91%A8%E8%87%AA%E5%88%B6%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%EF%BC%88%E7%AC%AC%E4%B8%80%E6%9C%9F%EF%BC%89/Token%E7%B1%BB.png"><br>&#x8FD9;&#x79CD;&#x5BF9;&#x8C61;&#x5904;&#x7406;&#x8BB0;&#x5F55;&#x8BE5;&#x5355;&#x8BCD;&#x5BF9;&#x5E94;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x8FD8;&#x4F1A;&#x4FDD;&#x5B58;&#x5355;&#x8BCD;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5355;&#x8BCD;&#x6240;&#x5904;&#x4F4D;&#x7F6E;&#x7684;&#x884C;&#x53F7;&#x4FE1;&#x606F;&#x3002;<br>&#x5B9E;&#x9645;&#x7684;&#x5355;&#x8BCD;&#x4E3A; Token &#x7C7B;&#x7684;&#x5B50;&#x7C7B;&#x5BF9;&#x8C61;&#x3002;Token &#x7C7B;&#x6839;&#x636E;&#x5355;&#x8BCD;&#x7C7B;&#x578B;&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x6807;&#x8BC6;&#x7B26;&#x3001;&#x6574;&#x5F62;&#x5B57;&#x9762;&#x91CF;&#x3001;&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x9762;&#x91CF;&#x4E09;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x5355;&#x8BCD;</p>
+<h1 id="分割单词"><a href="#分割单词" class="headerlink" title="分割单词"></a>分割单词</h1><p>语言处理器的第一个组成部分是词法分析器（lexical analyzer），语言处理器通常将源代码的字符以单词为单位进行分组，切割成多个子字符串，此过程称为词法分析</p>
+<h2 id="Token-对象"><a href="#Token-对象" class="headerlink" title="Token 对象"></a>Token 对象</h2><p>例如，下面为程序的一段代码<br><code>while i &lt; 10 &#123;</code><br>词法分析会把它拆分为下面的字符串<br><code>&quot;while&quot; &quot;i&quot; &quot;&lt;&quot; &quot;10&quot; &quot;&#123;&quot;</code><br>代码被分割成 5 个字符串，人们将词法分析的结果称为单词（token）<br>词法分析筛选出解释程序与执行的必需部分。单词之间的空白或注释会在这一阶段被去除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">例如：i &#x3D; i + 1 &#x2F;&#x2F; increment</span><br><span class="line">处理后：i&#x3D;i+1</span><br></pre></td></tr></table></figure>
+<p>词法分析器将源代码视作字符串，并将它分割为若干单词。分割后得到的单词不再使用 String 对象表示，使用 Token 对象，具体定义如下。<br><img src="Token%E7%B1%BB.png"><br>这种对象处理记录该单词对应的字符串，还会保存单词的类型，单词所处位置的行号信息。<br>实际的单词为 Token 类的子类对象。Token 类根据单词类型，定义了标识符、整形字面量、字符串字面量三种类型的单词</p>
 <ul>
-<li>&#x6807;&#x8BC6;&#x7B26;&#xFF1A;&#x8986;&#x76D6; isIdentifier&#xFF08;&#x8FD4;&#x56DE;&#x771F;&#xFF09;</li>
-<li>&#x6574;&#x5F62;&#x5B57;&#x9762;&#x91CF;&#xFF1A;&#x8986;&#x76D6; isNumber&#xFF08;&#x8FD4;&#x56DE;&#x771F;&#xFF09;</li>
-<li>&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x9762;&#x91CF;&#xFF1A;&#x8986;&#x76D6; isString&#xFF08;&#x8FD4;&#x56DE;&#x771F;&#xFF09;</li>
+<li>标识符：覆盖 isIdentifier（返回真）</li>
+<li>整形字面量：覆盖 isNumber（返回真）</li>
+<li>字符串字面量：覆盖 isString（返回真）</li>
 </ul>
-<p>Stone &#x8BED;&#x8A00;&#x5B9A;&#x4E49;&#x4E86;&#x7279;&#x522B;&#x5355;&#x8BCD;&#xFF0C;&#x5177;&#x4F53;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x4E3A; &#x5B57;&#x7B26;&#x4E32;</p>
+<p>Stone 语言定义了特别单词，具体对象类型为 字符串</p>
 <ul>
-<li>Token.EOF&#xFF1A;&#x8868;&#x793A;&#x7A0B;&#x5E8F;&#x7ED3;&#x675F;</li>
-<li>Token.EOL&#xFF1A;&#x8868;&#x793A;&#x6362;&#x884C;</li>
+<li>Token.EOF：表示程序结束</li>
+<li>Token.EOL：表示换行</li>
 </ul>
-<p>&#x4E0B;&#x4E00;&#x671F;&#x5C06;&#x9610;&#x8FF0;&#x5982;&#x4F55;&#x901A;&#x8FC7;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5B9A;&#x4E49; Token</p>
+<h2 id="通过正则表达式定义单词"><a href="#通过正则表达式定义单词" class="headerlink" title="通过正则表达式定义单词"></a>通过正则表达式定义单词</h2><p>设计词法分析器，首先要考虑每一种类型的单词的定义，规定怎样的字符串才能构成一个单词。<br>整形字面量定义为：<code>[0-9]+</code>，记为 pat1<br>标识符字面量定义为：<code>[A-Z_a-z][A-Z_a-z0-9]* | == | &gt;= | &lt;= | &amp;&amp; | \|\| | \p&#123;Punct&#125;</code>，记为 pat2<br>字符串字面量定义为：<code>&quot;(\\&quot;|\\\\|\\n|[^&quot;])*&quot;</code>，记为 pat3<br>注释字面量定义为：<code>//.*</code>，记为 pat4</p>
+<h2 id="借助-java-util-regex-设计词法分析器"><a href="#借助-java-util-regex-设计词法分析器" class="headerlink" title="借助 java.util.regex 设计词法分析器"></a>借助 java.util.regex 设计词法分析器</h2><p>则词法分析器，可归总为总正则表达式：<code>\s*(pat4)|(pat1)|(pat2)|(pat3)?</code><br>对于不同的字面量，将可以直接通过 pat1-4 进行引用。<br>Lexer 类构造函数接受 java.io.Reader 对象，根据需要逐行读取源代码，供执行词法分析</p>
+<ul>
+<li>read：从源代码头部逐一获取单词，调用 read 返回一个新的单词</li>
+<li>peek：将返回 read 方法即将返回的单词之后的第 i 个单词</li>
+<li>readLind：从每一行中读取单词的方法</li>
+</ul>
+<p>peek 方法可以事先获知之后将会取得的单词，以此避免撤销抽象语法树的构造。要调用 peek 方法，词法分析器需要在读取代码并获取单词后，将单词保存在队列中，此后，peek 与 read 方法会根据需要从中取值并返回，由 read 方法读取的单词会从 queue 中删除。</p>
+<p>编译正则表达式为 Pattern 对象，调用 matcher 方法来获取一个用于实际检查匹配的 Matcher 对象。词法分析器一边通过 region 方法限定对象检查匹配的范围，一边通过 lookingAt 方法在检查范围内进行正则表达式匹配。之后，词法分析器将使用 group 方法来获取与各个括号对应的子字符串。end 方法用于取得匹配部分的结束位置。</p>
 
     </div>
      
     <div class="post-footer__meta">
     <p>
-        updated at 2020-11-12
+        updated at 2020-11-17
     </p>
 </div> 
     <div class="post-meta__cats">
@@ -208,16 +222,30 @@
     <div class="nav">
         <div class="nav__prev">
             
+                <a href="/2020/11/17/%E5%AE%89%E5%85%A8%E8%AE%A4%E8%AF%81%E6%8E%A8%E8%8D%90/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            安全认证证书推荐
+                        </div>
+                    </div>
+                </a>
+            
         </div>
         <div class="nav__next">
             
-                <a href="/2020/11/12/%E5%AE%89%E5%85%A8%E8%AE%A4%E8%AF%81%E6%8E%A8%E8%8D%90/" class="nav__link">
+                <a href="/2020/11/12/%E8%B5%84%E6%BA%90-%E7%AC%AC%E4%B8%80%E6%9C%9F/" class="nav__link">
                     <div>
                         <div class="nav__label">
                             Next Post
                         </div>
                         <div class="nav__title">
-                            安全认证证书推荐
+                            资源(第一期)
                         </div>
                     </div>
                     <div>
