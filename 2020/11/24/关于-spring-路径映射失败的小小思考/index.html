@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+
+
+    <!-- meta -->
+
+
+<title>关于 spring 路径映射失败的小小思考 | lianzixin</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="起因在某一天写项目的时候，前端使用 react，后端使用 Spring boot，明明使用 Spring 写了 Controller，却老是报 java.lang.NullPointerException 异常，控制器如下 12@GetMapping(&quot;&#x2F;image&#x2F;&amp;#123;id&amp;#125;&quot;)public void getImage(@PathVari">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 spring 路径映射失败的小小思考">
+<meta property="og:url" content="http://lianzixin.github.io/2020/11/24/%E5%85%B3%E4%BA%8E-spring-%E8%B7%AF%E5%BE%84%E6%98%A0%E5%B0%84%E5%A4%B1%E8%B4%A5%E7%9A%84%E5%B0%8F%E5%B0%8F%E6%80%9D%E8%80%83/index.html">
+<meta property="og:site_name" content="lianzixin">
+<meta property="og:description" content="起因在某一天写项目的时候，前端使用 react，后端使用 Spring boot，明明使用 Spring 写了 Controller，却老是报 java.lang.NullPointerException 异常，控制器如下 12@GetMapping(&quot;&#x2F;image&#x2F;&amp;#123;id&amp;#125;&quot;)public void getImage(@PathVari">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-24T03:36:30.000Z">
+<meta property="article:modified_time" content="2020-11-24T03:36:46.838Z">
+<meta property="article:author" content="lianzixin">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">lianzixin</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        关于 spring 路径映射失败的小小思考
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/11/" class="post-meta__date button">
+    2020-11-24
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/spring/" class="button">spring</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>在某一天写项目的时候，前端使用 react，后端使用 Spring boot，明明使用 Spring 写了 Controller，却老是报 java.lang.NullPointerException 异常，控制器如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;&#x2F;image&#x2F;&#123;id&#125;&quot;)</span><br><span class="line">public void getImage(@PathVariable BigInteger id, HttpServletResponse response) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于该控制器，每次使用 localhost:8080/image/2 访问都会报 java.lang.NullPointerException 异常，询问谷歌也没有结果。<br>查了许多关于 @PathVariable 注解的相关文章，也没有个所以然，要是修改成 @RequestParam 注解却可以正常运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;&#x2F;image&quot;)</span><br><span class="line">public void getImage(@RequestParam BigInteger id, HttpServletResponse response) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>查了许多文章，首先确定 Spring @PathVariable 注解是没有问题的，那么问题出在哪了，这时候只能祭出 debug 大法了。</p>
+<h1 id="Spring-分发映射调用链"><a href="#Spring-分发映射调用链" class="headerlink" title="Spring 分发映射调用链"></a>Spring 分发映射调用链</h1><p>首先进入 DispatcherServlet.java ，在 1000 行的 doDispatch 函数下断点，可以大致猜出，该函数从注册的控制器中找出一个与请求路径最匹配的控制器，注释内容如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Process the actual dispatching to the handler.</span></span><br><span class="line"><span class="comment">  * &lt;p&gt;The handler will be obtained by applying the servlet&#x27;s HandlerMappings in order.</span></span><br><span class="line"><span class="comment">  * The HandlerAdapter will be obtained by querying the servlet&#x27;s installed HandlerAdapters</span></span><br><span class="line"><span class="comment">  * to find the first that supports the handler class.</span></span><br><span class="line"><span class="comment">  * &lt;p&gt;All HTTP methods are handled by this method. It&#x27;s up to HandlerAdapters or handlers</span></span><br><span class="line"><span class="comment">  * themselves to decide which methods are acceptable.</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> request current HTTP request</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> response current HTTP response</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@throws</span> Exception in case of any kind of processing failure</span></span><br><span class="line"><span class="comment">  */</span></span><br></pre></td></tr></table></figure>
+
+<p>具体寻找控制器的代码在 1016 行的 getHandler中，单步进入后去到 1232 行，该函数非常简单，同时也是抛出无控制器异常的罪魁祸首<br>该函数具体实现为：在注册的控制器，也就是 handleMappings 中，取出单个 mapping，与 request 作比较取出对应控制器，是一个遍历的过程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Return the HandlerExecutionChain for this request.</span></span><br><span class="line"><span class="comment">  * &lt;p&gt;Tries all handler mappings in order.</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> request current HTTP request</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@return</span> the HandlerExecutionChain, or &#123;<span class="doctag">@code</span> null&#125; if no handler could be found</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="meta">@Nullable</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> HandlerExecutionChain <span class="title">getHandler</span><span class="params">(HttpServletRequest request)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.handlerMappings != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (HandlerMapping mapping : <span class="keyword">this</span>.handlerMappings) &#123;</span><br><span class="line">      HandlerExecutionChain handler = mapping.getHandler(request);</span><br><span class="line">      <span class="keyword">if</span> (handler != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> handler;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>与对应 url 作比较则是在 getHandler 函数内，进入函数体，可以看到调用的为<br>AbstractHandlerMapping 文件下 394 行的 HanlderExecutionChain，函数如下<br>实际上进行控制器匹配的也就是第一行代码，又得单步进入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Look up a handler for the given request, falling back to the default</span></span><br><span class="line"><span class="comment">  * handler if no specific one is found.</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> request current HTTP request</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@return</span> the corresponding handler instance, or the default handler</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@see</span> #getHandlerInternal</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="meta">@Nullable</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> HandlerExecutionChain <span class="title">getHandler</span><span class="params">(HttpServletRequest request)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">  Object handler = getHandlerInternal(request);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到为一个接口函数，进入具体实现后，为 AbstractHandlerMethodMapping 文件下 362 行的 getHandlerInternal 函数，该函数是对每一个注册资源进行加锁查找，然后最后释放锁，具体查找过程在 lookupHandlerMethod 函数内</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Look up a handler method for the given request.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> HandlerMethod <span class="title">getHandlerInternal</span><span class="params">(HttpServletRequest request)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">  String lookupPath = getUrlPathHelper().getLookupPathForRequest(request);</span><br><span class="line">  request.setAttribute(LOOKUP_PATH, lookupPath);</span><br><span class="line">  <span class="keyword">this</span>.mappingRegistry.acquireReadLock();</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    HandlerMethod handlerMethod = lookupHandlerMethod(lookupPath, request);</span><br><span class="line">    <span class="keyword">return</span> (handlerMethod != <span class="keyword">null</span> ? handlerMethod.createWithResolvedBean() : <span class="keyword">null</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.mappingRegistry.releaseReadLock();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>打开 AbstractHandlerMethodMapping 文件的第 375 行，该函数就是查找控制器的实际逻辑函数了，可以看到注释为<strong>为当前请求查找到最匹配的控制器方法</strong>，如何查找最匹配的控制器方法呢，构造出一个集合 List 进行查找，有两种方式，一种是直接查看哈希表中有没有直接匹配的路径，添加到 list 进行查找，一种是直接使用全量数据，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Look up the best-matching handler method for the current request.</span></span><br><span class="line"><span class="comment">	 * If multiple matches are found, the best match is selected.</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> lookupPath mapping lookup path within the current servlet mapping</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> request the current request</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> the best-matching handler method, or &#123;<span class="doctag">@code</span> null&#125; if no match</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> #handleMatch(Object, String, HttpServletRequest)</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> #handleNoMatch(Set, String, HttpServletRequest)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Nullable</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> HandlerMethod <span class="title">lookupHandlerMethod</span><span class="params">(String lookupPath, HttpServletRequest request)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		List&lt;Match&gt; matches = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		List&lt;T&gt; directPathMatches = <span class="keyword">this</span>.mappingRegistry.getMappingsByUrl(lookupPath);</span><br><span class="line">		<span class="keyword">if</span> (directPathMatches != <span class="keyword">null</span>) &#123;</span><br><span class="line">			addMatchingMappings(directPathMatches, matches, request);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (matches.isEmpty()) &#123;</span><br><span class="line">			<span class="comment">// No choice but to go through all mappings...</span></span><br><span class="line">			addMatchingMappings(<span class="keyword">this</span>.mappingRegistry.getMappings().keySet(), matches, request);</span><br><span class="line">		&#125;</span><br><span class="line">    <span class="comment">/*下面已省略*/</span></span><br><span class="line">    ...</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如何确定是否匹配呢，那么就得用到 addMatchingMappings 函数，该函数的作用为，取出需要匹配的集合，也就是上面获取到的 直接匹配或者全量数据的 List，与当前 request、mapping 进行比较，取出匹配控制器，搞了半天，还没到具体逻辑，猜应该就是 getMatchingMapping 了，单步进入看看</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addMatchingMappings</span><span class="params">(Collection&lt;T&gt; mappings, List&lt;Match&gt; matches, HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (T mapping : mappings) &#123;</span><br><span class="line">    T match = getMatchingMapping(mapping, request);</span><br><span class="line">    <span class="keyword">if</span> (match != <span class="keyword">null</span>) &#123;</span><br><span class="line">      matches.add(<span class="keyword">new</span> Match(match, <span class="keyword">this</span>.mappingRegistry.getMappings().get(mapping)));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>进入后为 info.getMatchingCondition 方法，继续进入，进入到 RequestMappingInfo 文件的 210 行，这就是最终确定是否匹配的方法了，确定条件是否满足，满足则返回控制器<br>可以看出来该处进行了请求方法，请求头、请求模式的比较，只有全部符合，才会返回对应控制器。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Checks if all conditions in this request mapping info match the provided request and returns</span></span><br><span class="line"><span class="comment"> * a potentially new request mapping info with conditions tailored to the current request.</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;For example the returned instance may contain the subset of URL patterns that match to</span></span><br><span class="line"><span class="comment"> * the current request, sorted with best matching patterns on top.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> a new instance in case all conditions match; or &#123;<span class="doctag">@code</span> null&#125; otherwise</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="meta">@Nullable</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RequestMappingInfo <span class="title">getMatchingCondition</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">	RequestMethodsRequestCondition methods = <span class="keyword">this</span>.methodsCondition.getMatchingCondition(request);</span><br><span class="line">	<span class="keyword">if</span> (methods == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ParamsRequestCondition params = <span class="keyword">this</span>.paramsCondition.getMatchingCondition(request);</span><br><span class="line">	<span class="keyword">if</span> (params == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	HeadersRequestCondition headers = <span class="keyword">this</span>.headersCondition.getMatchingCondition(request);</span><br><span class="line">	<span class="keyword">if</span> (headers == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ConsumesRequestCondition consumes = <span class="keyword">this</span>.consumesCondition.getMatchingCondition(request);</span><br><span class="line">	<span class="keyword">if</span> (consumes == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ProducesRequestCondition produces = <span class="keyword">this</span>.producesCondition.getMatchingCondition(request);</span><br><span class="line">	<span class="keyword">if</span> (produces == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	PatternsRequestCondition patterns = <span class="keyword">this</span>.patternsCondition.getMatchingCondition(request);</span><br><span class="line">	<span class="keyword">if</span> (patterns == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	RequestConditionHolder custom = <span class="keyword">this</span>.customConditionHolder.getMatchingCondition(request);</span><br><span class="line">	<span class="keyword">if</span> (custom == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> RequestMappingInfo(<span class="keyword">this</span>.name, patterns,</span><br><span class="line">			methods, params, headers, consumes, produces, custom.getCondition());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>抛出异常的最可能的地方也就是这里了，那么回到最初的问题，@Pathvariable 注解为什么会失效呢，打断点到与 @Pathvariable 控制器最近的控制器，这时候可以使用 IDEA 的条件断点模式，发现总是执行不到带有 @Pathvariable 控制器的匹配上，最终发现，罪魁祸首是下面的控制器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &#123;&quot;/&quot;,&quot;&quot;&#125;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">Index</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>具体原因就是该控制器在 List 中的顺序比带有 @Pathvariable 控制器前，因此当进行到该处控制器匹配的时候，第二个值 “” 被 spring 解释为 null，直接在匹配具体逻辑就直接报错，因此把这个控制器去掉，就不会报空指针错误了</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>由于是接手前人的项目，所有东西大部分都得推倒重来，偶尔遇到几个坑也是有的。<br>对于 Spring 映射，最好不要使用空字符串为值，因为会被当做 null，这时候就会报 NullPointer 错误了，只需要把对应控制器删除，该问题就会得到解决。<br>收工！</p>
+
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-11-24
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+        <a href="/categories/spring/" class="post-cats__link button">spring</a>
+    
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/11/17/%E5%85%B3%E4%BA%8E%E8%A7%A3%E5%86%B3%E6%9C%89%E5%85%B3ONLY-FULL-GROUP-BY-SQL%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%A4%B1%E8%B4%A5/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            关于解决有关ONLY_FULL_GROUP_BY SQL模式的查询失败
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2020&nbsp;-&nbsp;2020 <a href="/">lianzixin</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
