@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+
+
+    <!-- meta -->
+
+
+<title>如何创建 React 项目 | lianzixin</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="创建 Typescript 项目 创建文件夹：mkdir app 进入 app 文件夹，初始化 npm ：npm init &#x2F;&#x2F;根据提示生成 package.json 文件 安装 typescript&#x2F;tslint 和 NodeJs 的类型声明：npm install --save-dev typescript tslint @types&#x2F;node &#x2F;&#x2F; tslint 是代码规则检查工具，保持代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何创建 React 项目">
+<meta property="og:url" content="http://lianzixin.github.io/2020/12/01/how-to-create-react/index.html">
+<meta property="og:site_name" content="lianzixin">
+<meta property="og:description" content="创建 Typescript 项目 创建文件夹：mkdir app 进入 app 文件夹，初始化 npm ：npm init &#x2F;&#x2F;根据提示生成 package.json 文件 安装 typescript&#x2F;tslint 和 NodeJs 的类型声明：npm install --save-dev typescript tslint @types&#x2F;node &#x2F;&#x2F; tslint 是代码规则检查工具，保持代码">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-01T03:06:31.000Z">
+<meta property="article:modified_time" content="2020-12-01T03:06:35.265Z">
+<meta property="article:author" content="lianzixin">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">lianzixin</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        如何创建 React 项目
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/12/" class="post-meta__date button">
+    2020-12-01
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/how-to/" class="button">how to</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h1 id="创建-Typescript-项目"><a href="#创建-Typescript-项目" class="headerlink" title="创建 Typescript 项目"></a>创建 Typescript 项目</h1><ol>
+<li>创建文件夹：<code>mkdir app</code></li>
+<li>进入 <code>app</code> 文件夹，初始化 <code>npm</code> ：<code>npm init</code> //根据提示生成 <code>package.json</code> 文件</li>
+<li>安装 <code>typescript/tslint</code> 和 <code>NodeJs</code> 的类型声明：<code>npm install --save-dev typescript tslint @types/node</code> // <code>tslint</code> 是代码规则检查工具，保持代码风格一致</li>
+<li>配置 <code>tsconfig.json</code>：<code>./node_modules/.bin/tsc --init</code> //ts 配置信息</li>
+<li>配置 <code>tslint.json</code>：<code>./node_modules/.bin/tslint --init</code> //配置规则信息</li>
+<li>在 src 目录创建 index.ts 作为入口文件：<code>/src/index.ts</code> // 需要在 tsconfig 配置</li>
+<li>编译：<code>tsc</code> //将会生成对应的 js 文件，需要在 tsconfig 配置输出目录</li>
+<li>运行：<code>node ./dist/index.js</code> //运行 js 文件</li>
+</ol>
+<h1 id="创建-TypeScript-React-app"><a href="#创建-TypeScript-React-app" class="headerlink" title="创建 TypeScript-React app"></a>创建 TypeScript-React app</h1><ol>
+<li>初始化项目：<code>npx create-react-app &lt;name&gt; --template typescript</code></li>
+<li>安装 eslint：<code>npm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin</code></li>
+<li>eslint 初始化：<code>eslint --init</code></li>
+<li>安装 prettier：<code>npm install prettier eslint-config-prettier eslint-plugin-prettier</code></li>
+</ol>
+<p><strong>EditorConfig</strong><br><code>EditorConfig</code> 可以帮助开发者在不同的编辑器和 IDE 之间定义和维护一致的代码风格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># http:&#x2F;&#x2F;editorconfig.org</span><br><span class="line">root &#x3D; true</span><br><span class="line"></span><br><span class="line">[*]</span><br><span class="line">charset &#x3D; utf-8</span><br><span class="line">end_of_line &#x3D; lf</span><br><span class="line">indent_size &#x3D; 2</span><br><span class="line">indent_style &#x3D; space</span><br><span class="line">insert_final_newline &#x3D; true</span><br><span class="line">max_line_length &#x3D; 80</span><br><span class="line">trim_trailing_whitespace &#x3D; true</span><br><span class="line"></span><br><span class="line">[*.md]</span><br><span class="line">max_line_length &#x3D; 0</span><br></pre></td></tr></table></figure>
+
+<p><strong>ESLint</strong><br><code>ESLint</code> 是一个 <code>Javascript Linter</code>，帮助我们规范代码质量，提高团队开发效率。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  parser: &#123;&#125;,  <span class="comment">// 解析器</span></span><br><span class="line">  <span class="keyword">extends</span>: [], <span class="comment">// 继承的规则 [扩展]</span></span><br><span class="line">  plugins: [], <span class="comment">// 插件</span></span><br><span class="line">  rules: &#123;&#125;    <span class="comment">// 规则</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>采用 react 团队提供的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  parser: <span class="string">&quot;@typescript-eslint/parser&quot;</span>,</span><br><span class="line">  <span class="keyword">extends</span>: [<span class="string">&quot;plugin:@typescript-eslint/recommended&quot;</span>, <span class="string">&quot;react-app&quot;</span>],</span><br><span class="line">  plugins: [<span class="string">&quot;@typescript-eslint&quot;</span>, <span class="string">&quot;react&quot;</span>],</span><br><span class="line">  rules: &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Prettier</strong><br><code>prettier</code> 是一个能够统一团队编码风格的工具<br>使用 Prettier 与 eslint 的合体</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  parser: <span class="string">&#x27;@typescript-eslint/parser&#x27;</span>,</span><br><span class="line">  <span class="keyword">extends</span>: [</span><br><span class="line">    <span class="string">&#x27;plugin:@typescript-eslint/recommended&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;react-app&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;plugin:prettier/recommended&#x27;</span>,</span><br><span class="line">  ],</span><br><span class="line">  plugins: [<span class="string">&#x27;@typescript-eslint&#x27;</span>, <span class="string">&#x27;react&#x27;</span>],</span><br><span class="line">  rules: &#123;&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>VsCode 继承 ESLint 与 Prettier</strong><br>需要修改 <code>setting.json</code> 文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&quot;eslint.validate&quot;: [</span><br><span class="line">    &quot;javascript&quot;,</span><br><span class="line">    &quot;javascriptreact&quot;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;language&quot;</span>: <span class="string">&quot;typescript&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;autoFix&quot;</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;language&quot;</span>: <span class="string">&quot;typescriptreact&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;autoFix&quot;</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p><strong>最终目录</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">app</span><br><span class="line">├── README.md</span><br><span class="line">├── node_modules</span><br><span class="line">├── package.json</span><br><span class="line">├── .eslintrc.js</span><br><span class="line">├── .prettierrc</span><br><span class="line">├── .gitignore</span><br><span class="line">├── public</span><br><span class="line">│   ├── favicon.ico</span><br><span class="line">│   ├── index.html</span><br><span class="line">│   ├── logo192.png</span><br><span class="line">│   ├── logo512.png</span><br><span class="line">│   ├── manifest.json</span><br><span class="line">│   └── robots.txt</span><br><span class="line">└── src</span><br><span class="line">    ├── App.css</span><br><span class="line">    ├── App.js</span><br><span class="line">    ├── App.test.js</span><br><span class="line">    ├── index.css</span><br><span class="line">    ├── index.js</span><br><span class="line">    ├── logo.svg</span><br><span class="line">    ├── serviceWorker.js</span><br><span class="line">    └── setupTests.js</span><br></pre></td></tr></table></figure>
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-12-01
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+        <a href="/categories/how-to/" class="post-cats__link button">how to</a>
+    
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/2020/12/02/how-to-use-route-in-react/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            在 React 中如何优雅使用路由
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/11/25/npm-%E5%8F%91%E5%B8%83/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            npm 发布
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2020&nbsp;-&nbsp;2020 <a href="/">lianzixin</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>

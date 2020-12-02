@@ -21,7 +21,7 @@
     <!-- meta -->
 
 
-<title>关于二叉树的解题模板 | lianzixin</title>
+<title>关于二叉树的解题模板（基于 leetcode 简单题） | lianzixin</title>
 
 
 
@@ -31,13 +31,13 @@
  
     <meta name="description" content="关于二叉树的解题模板刷了那么多二叉树的题目，逐渐地领会到有一些规律在二叉树中，有些时候，需要改动的只是少部分，基本上就是照搬模板就行了。有了模板，需要关注的点就是解题细节，而不是关注解题框架。 关于树节点的定义约定一下二叉树节点的类定义 1234567891011struct TreeNode &amp;#123;  &#x2F;&#x2F;节点值  int val;  &#x2F;&#x2F;左子树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于二叉树的解题模板">
+<meta property="og:title" content="关于二叉树的解题模板（基于 leetcode 简单题）">
 <meta property="og:url" content="http://lianzixin.github.io/2020/11/24/binary-tree/index.html">
 <meta property="og:site_name" content="lianzixin">
 <meta property="og:description" content="关于二叉树的解题模板刷了那么多二叉树的题目，逐渐地领会到有一些规律在二叉树中，有些时候，需要改动的只是少部分，基本上就是照搬模板就行了。有了模板，需要关注的点就是解题细节，而不是关注解题框架。 关于树节点的定义约定一下二叉树节点的类定义 1234567891011struct TreeNode &amp;#123;  &#x2F;&#x2F;节点值  int val;  &#x2F;&#x2F;左子树">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-24T04:01:15.000Z">
-<meta property="article:modified_time" content="2020-11-24T04:01:22.169Z">
+<meta property="article:modified_time" content="2020-12-01T10:44:08.550Z">
 <meta property="article:author" content="lianzixin">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -116,13 +116,15 @@
 
 <div class="post-title">
     <h1 class="post-title__text">
-        关于二叉树的解题模板
+        关于二叉树的解题模板（基于 leetcode 简单题）
     </h1>
     <div class="post-title__meta">
         <a href="/archives/2020/11/" class="post-meta__date button">
     2020-11-24
 </a>
         
+    <span class="separate-dot"></span><a href="/categories/solve-template/" class="button">solve-template</a>
+
  
         
     
@@ -180,14 +182,26 @@
 
 <h2 id="关于多叉树最大深度的模板"><a href="#关于多叉树最大深度的模板" class="headerlink" title="关于多叉树最大深度的模板"></a>关于多叉树最大深度的模板</h2><p>对于求解深度，首先需要对树进行遍历操作，因此使用遍历模板，写出以下代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*返回类型为 int*&#x2F;</span><br><span class="line">int maxDepth(Node* root) &#123;</span><br><span class="line">  &#x2F;*空节点返回 0*&#x2F;</span><br><span class="line">  if(!root) return 0;</span><br><span class="line"></span><br><span class="line">  &#x2F;*记录深度的中间变量*&#x2F;</span><br><span class="line">  int deep &#x3D; 1;</span><br><span class="line"></span><br><span class="line">  &#x2F;*遍历孩子节点，取最大值*&#x2F;</span><br><span class="line">  for(auto children : root-&gt;children)&#123;</span><br><span class="line">      deep &#x3D; max(deep, maxDepth(children)+1);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;*返回最大深度*&#x2F;</span><br><span class="line">  return deep;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="经典题目"><a href="#经典题目" class="headerlink" title="经典题目"></a>经典题目</h2><p><strong>从前序与中序遍历序列构造二叉树</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">前提条件</span><br><span class="line">前序遍历 preorder &#x3D; [3,9,20,15,7]</span><br><span class="line">中序遍历 inorder &#x3D; [9,3,15,20,7]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">TreeNode* <span class="title">help</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder, </span></span></span><br><span class="line"><span class="function"><span class="params">  <span class="keyword">int</span> pre_left, <span class="keyword">int</span> pre_right,</span></span></span><br><span class="line"><span class="function"><span class="params">  <span class="keyword">int</span> in_left, <span class="keyword">int</span> in_right)</span></span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(pre_left &gt; pre_right) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">      <span class="comment">//以前序最左为根节点</span></span><br><span class="line">      TreeNode* root = <span class="keyword">new</span> TreeNode(preorder[pre_left]);</span><br><span class="line">      <span class="comment">//获取中序中根节点的位置</span></span><br><span class="line">      <span class="keyword">int</span> position = m[preorder[pre_left]];</span><br><span class="line">      <span class="comment">//计算左子树大小</span></span><br><span class="line">      <span class="keyword">int</span> left_size = position - in_left;</span><br><span class="line">      <span class="comment">//递归构建</span></span><br><span class="line">      root-&gt;left = help(preorder, inorder, pre_left+<span class="number">1</span>, pre_left+left_size, in_left, position<span class="number">-1</span>);</span><br><span class="line">      root-&gt;right = help(preorder, inorder, pre_left+left_size+<span class="number">1</span>, pre_right, position+<span class="number">1</span>, in_right);</span><br><span class="line">      <span class="keyword">return</span> root;                </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>从中序与后续遍历序列构造二叉树</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">前提条件</span><br><span class="line">中序遍历 inorder &#x3D; [9,3,15,20,7]</span><br><span class="line">后序遍历 postorder &#x3D; [9,15,7,20,3]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">TreeNode* <span class="title">help</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; postorder, <span class="keyword">int</span> inLeft, <span class="keyword">int</span> inRight, <span class="keyword">int</span> postLeft, <span class="keyword">int</span> postRight)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(inLeft &gt; inRight) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//后序最右为根节点</span></span><br><span class="line">    <span class="keyword">int</span> root_val = postorder[postRight];</span><br><span class="line">    TreeNode* root = <span class="keyword">new</span> TreeNode(root_val);</span><br><span class="line">    <span class="comment">//获取根节点在中序的位置</span></span><br><span class="line">    <span class="keyword">int</span> root_position = m[root_val];</span><br><span class="line">    <span class="comment">//计算左子树数目</span></span><br><span class="line">    <span class="keyword">int</span> left_tree_size = root_position - inLeft;</span><br><span class="line">    <span class="comment">//递归构建</span></span><br><span class="line">    root-&gt;left = help(inorder, postorder, inLeft, root_position<span class="number">-1</span>, postLeft, postLeft+left_tree_size<span class="number">-1</span>);</span><br><span class="line">    root-&gt;right = help(inorder, postorder, root_position+<span class="number">1</span>, inRight, postLeft+left_tree_size, postRight<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
      
     <div class="post-footer__meta">
     <p>
-        updated at 2020-11-24
+        updated at 2020-12-01
     </p>
 </div> 
     <div class="post-meta__cats">
+    
+        <a href="/categories/solve-template/" class="post-cats__link button">solve-template</a>
     
     
 </div> 
@@ -196,6 +210,20 @@
 
     <div class="nav">
         <div class="nav__prev">
+            
+                <a href="/2020/11/25/npm-%E5%8F%91%E5%B8%83/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            npm 发布
+                        </div>
+                    </div>
+                </a>
             
         </div>
         <div class="nav__next">

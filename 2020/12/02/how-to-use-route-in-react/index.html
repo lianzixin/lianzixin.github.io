@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+
+
+    <!-- meta -->
+
+
+<title>在 React 中如何优雅使用路由 | lianzixin</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="安装所需依赖 react-router-dom：npm install react-router-dom react-loadable：npm install react-loadable  依赖简要介绍Router——路由器当开始一个新项目时，应该决定要使用哪种 router。对于在浏览器运行的项目，可以选择  BrowserRouter：应用在服务器处理动态请求的项目中 HasRouter：应">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 React 中如何优雅使用路由">
+<meta property="og:url" content="http://lianzixin.github.io/2020/12/02/how-to-use-route-in-react/index.html">
+<meta property="og:site_name" content="lianzixin">
+<meta property="og:description" content="安装所需依赖 react-router-dom：npm install react-router-dom react-loadable：npm install react-loadable  依赖简要介绍Router——路由器当开始一个新项目时，应该决定要使用哪种 router。对于在浏览器运行的项目，可以选择  BrowserRouter：应用在服务器处理动态请求的项目中 HasRouter：应">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-02T06:50:23.000Z">
+<meta property="article:modified_time" content="2020-12-02T06:59:11.224Z">
+<meta property="article:author" content="lianzixin">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">lianzixin</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        在 React 中如何优雅使用路由
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/12/" class="post-meta__date button">
+    2020-12-02
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/how-to/" class="button">how to</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h1 id="安装所需依赖"><a href="#安装所需依赖" class="headerlink" title="安装所需依赖"></a>安装所需依赖</h1><ul>
+<li><code>react-router-dom</code>：<code>npm install react-router-dom</code></li>
+<li><code>react-loadable</code>：<code>npm install react-loadable</code></li>
+</ul>
+<h1 id="依赖简要介绍"><a href="#依赖简要介绍" class="headerlink" title="依赖简要介绍"></a>依赖简要介绍</h1><h2 id="Router——路由器"><a href="#Router——路由器" class="headerlink" title="Router——路由器"></a>Router——路由器</h2><p>当开始一个新项目时，应该决定要使用哪种 <code>router</code>。对于在浏览器运行的项目，可以选择</p>
+<ul>
+<li><code>BrowserRouter</code>：应用在服务器处理动态请求的项目中</li>
+<li><code>HasRouter</code>：应用在处理静态页面的项目中</li>
+</ul>
+<h2 id="Route——路线匹配器"><a href="#Route——路线匹配器" class="headerlink" title="Route——路线匹配器"></a>Route——路线匹配器</h2><p>对于路线匹配有两个匹配组件：<code>Switch</code> 与 <code>Route</code></p>
+<ul>
+<li><code>Switch</code>：搜索其 children 对象，找到一个与当前 URL 匹配的对象，将开始渲染该对象，并忽略所有其他对象。</li>
+<li><code>Route</code>：匹配 URL 的开头，匹配成功返回对应组件</li>
+</ul>
+<h2 id="Link——导航器"><a href="#Link——导航器" class="headerlink" title="Link——导航器"></a>Link——导航器</h2><p>对于导航器有三个导航组件：<code>Link</code> 、 <code>NavLink</code> 、<code>Redirect</code></p>
+<ul>
+<li><code>Link</code>：类似于 a 标签，会出现锚点，跳转到对应 url 链接</li>
+<li><code>NavLink</code>：特殊类型的 <code>Link</code>，可以自定义选中的风格</li>
+<li><code>Redirect</code>：强制导航</li>
+</ul>
+<h1 id="具体-API-用法"><a href="#具体-API-用法" class="headerlink" title="具体 API 用法"></a>具体 API 用法</h1><h2 id=""><a href="#" class="headerlink" title=""></a><Link></h2><p>提供有关应用程序的可访问的导航</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//简单用法</span></span><br><span class="line">&lt;Link to=<span class="string">&quot;/about&quot;</span>&gt;About&lt;/Link&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Object</span></span><br><span class="line">&lt;Link to=&#123;&#123;</span><br><span class="line">  pathname: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  search: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  hash: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  state: &#123; <span class="attr">fromDashboard</span>: <span class="literal">true</span>&#125;</span><br><span class="line">&#125;&#125; /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//函数</span></span><br><span class="line">&lt;Link to=&#123;</span><br><span class="line">  location =&gt; (&#123;...location, <span class="attr">pathname</span>: <span class="string">&#x27;&#x27;</span>&#125;)</span><br><span class="line">&#125; /&gt;</span><br><span class="line">&lt;Link to=&#123;</span><br><span class="line">  location =&gt; <span class="string">`<span class="subst">$&#123;location.pathname&#125;</span>?sort=name`</span></span><br><span class="line">&#125;/&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//React.Component</span></span><br><span class="line"><span class="keyword">const</span> FancyLink = React.forwardRef(<span class="function">(<span class="params">props, ref</span>) =&gt;</span> (</span><br><span class="line">  &lt;a ref=&#123;ref&#125; &#123;...props&#125;&gt;&#123;props.children&#125;&lt;/a&gt;</span><br><span class="line">))</span><br><span class="line">&lt;Link to=<span class="string">&quot;&quot;</span> component=&#123;FancyLink&#125;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><NavLink></h2><p>特殊版的 <Link>，可以指定元素处于活动时的样式</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//简单使用</span></span><br><span class="line">&lt;NavLink to=<span class="string">&quot;&quot;</span> activeClassName=<span class="string">&quot;&quot;</span>&gt;About&lt;/NavLink&gt;</span><br><span class="line">&lt;NavLink to=<span class="string">&quot;&quot;</span> activeStyle=&#123;&#123;&#125;&#125;&gt;About&lt;/NavLink&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//完全匹配</span></span><br><span class="line">&lt;NavLink exact to=<span class="string">&quot;&quot;</span>&gt;Profile&lt;/NavLink&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//严格匹配</span></span><br><span class="line">&lt;NavLink strict to=<span class="string">&quot;&quot;</span>&gt;Events&lt;/NavLink&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="-2"><a href="#-2" class="headerlink" title=""></a><Redirect></h2><p>重定向到新位置</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//简单实用</span></span><br><span class="line">&lt;Redirect to=<span class="string">&quot;&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//对象</span></span><br><span class="line">&lt;Redirect to=&#123;&#123;</span><br><span class="line">  pathname:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  search:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  state:&#123; <span class="attr">referrer</span>: currentLocation &#125;</span><br><span class="line">&#125;&#125; /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//from</span></span><br><span class="line"><span class="comment">//用来指定路由的原始值，如果不是给定的字符串，那么不渲染，反之渲染，只能用于switch组件中</span></span><br><span class="line">&lt;Redirect <span class="keyword">from</span>=<span class="string">&quot;&quot;</span> to=<span class="string">&quot;&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="-3"><a href="#-3" class="headerlink" title=""></a><Route></h2><p>在 path 与当前 URL 匹配时呈现一些 UI</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//简单实用</span></span><br><span class="line">&lt;Route exact path=<span class="string">&quot;/&quot;</span>&gt;</span><br><span class="line">  &lt;Home /&gt;</span><br><span class="line">&lt;/Route&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Component</span></span><br><span class="line">&lt;Route path=<span class="string">&quot;&quot;</span> component=&#123;&#125; /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//function</span></span><br><span class="line">&lt;Route path=<span class="string">&quot;&quot;</span> render=&#123;<span class="function">() =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>&#125;&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//exact 仅当 location.pathname 完全匹配，不关心 `/`</span></span><br><span class="line">&lt;Route exact path=<span class="string">&quot;&quot;</span>&gt;</span><br><span class="line">  &lt;About /&gt;</span><br><span class="line">&lt;/Route&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//strict 将匹配带有斜杠开头的 url </span></span><br><span class="line">&lt;Route strict path=<span class="string">&quot;&quot;</span>&gt;</span><br><span class="line">  &lt;About /&gt;</span><br><span class="line">&lt;/Route&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用精确匹配，strict 与 exact 同时使用</span></span><br><span class="line">&lt;Route exact strict path=<span class="string">&quot;&quot;</span>&gt;</span><br><span class="line">  &lt;About /&gt;</span><br><span class="line">&lt;/Route&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用带参数 url</span></span><br><span class="line">&lt;Route path=<span class="string">&quot;/hello/:number&quot;</span> /&gt;</span><br><span class="line"><span class="comment">//此时的 :number 参数将在 props.match.params 中</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="withRouter"><a href="#withRouter" class="headerlink" title="withRouter"></a>withRouter</h2><p><strong>location</strong></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//location对象表示当前的路由位置信息，主要包含如下属性</span></span><br><span class="line">&#123;</span><br><span class="line">    hash: <span class="literal">undefined</span>,</span><br><span class="line">    key: <span class="string">&quot;k9r4i3&quot;</span>,</span><br><span class="line">    pathname: <span class="string">&quot;/c&quot;</span>,</span><br><span class="line">    state: <span class="literal">undefined</span>,</span><br><span class="line">    search: <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>match</strong></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//match对象表示当前的路由地址是怎么跳转过来的，包含的属性如下</span></span><br><span class="line">&#123;</span><br><span class="line">    isExact: <span class="literal">true</span>, <span class="comment">// 表示匹配到当前路径是否是完全匹配</span></span><br><span class="line">    params: &#123;&#125;, <span class="comment">// 表示路径的动态参数值</span></span><br><span class="line">    path: <span class="string">&#x27;/c&#x27;</span>, <span class="comment">// 匹配到的原始路径</span></span><br><span class="line">    url: <span class="string">&#x27;/c&#x27;</span> <span class="comment">// 匹配到的实际路径</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当一个非路由组件想访问路由的 location、history 对象，使用 withRouter 进行包裹</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; withRouter &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router&#x27;</span></span><br><span class="line"><span class="keyword">const</span> MyComponent = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; match, location, history &#125; = <span class="built_in">this</span>.props</span><br><span class="line">     <span class="keyword">return</span> (</span><br><span class="line">        &lt;div&gt;&#123;props.location.pathname&#125;&lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> FirstTest = withRouter(MyComponent)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Loadable"><a href="#Loadable" class="headerlink" title="Loadable"></a>Loadable</h2><p>页面加载优化，实现按需加载功能，只有路由匹配的时候，组件才被 import 进来。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//API 如下</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">Loadable</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  loader: () =&gt; <span class="built_in">Promise</span>&lt;React.Component&gt;, <span class="comment">//加载函数</span></span></span></span><br><span class="line"><span class="function"><span class="params">  LoadingComponent: React.Component,      <span class="comment">//加载时占位元素</span></span></span></span><br><span class="line"><span class="function"><span class="params">  ErrorComponent?: React.Component | <span class="literal">null</span>, </span></span></span><br><span class="line"><span class="function"><span class="params">  delay?: <span class="built_in">number</span> = <span class="number">200</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">  render(loaded: Exports, props: Props): React.ReactNode <span class="comment">//自定义加载</span></span></span></span><br><span class="line"><span class="function"><span class="params"></span>)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="具体书写"><a href="#具体书写" class="headerlink" title="具体书写"></a>具体书写</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 /pages/index.ts 命名路由数组</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    load: <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;./home&#x27;</span>) <span class="comment">//其中 home 为目录，里面有 index.ts 具体组件</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// App.tsx 文件中，使用 Loadable 类</span></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  BrowserRouter <span class="keyword">as</span> Router,</span><br><span class="line">  Route,</span><br><span class="line">  Switch,</span><br><span class="line">  Redirect</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"><span class="keyword">import</span> Loadable <span class="keyword">from</span> <span class="string">&#x27;react-loadable&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; routes &#125; <span class="keyword">from</span> <span class="string">&#x27;pages&#x27;</span></span><br><span class="line">&lt;Router&gt;</span><br><span class="line">  &lt;Switch&gt;</span><br><span class="line">    &#123;(theRoutes <span class="keyword">as</span> &#123;</span><br><span class="line">      path: <span class="built_in">string</span></span><br><span class="line">      load: <span class="function">() =&gt;</span> <span class="built_in">Promise</span>&lt;<span class="built_in">object</span>&gt;</span><br><span class="line">    &#125;[]).map(<span class="function"><span class="params">route</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> (</span><br><span class="line">        &lt;Route</span><br><span class="line">          exact=&#123;<span class="literal">true</span>&#125;</span><br><span class="line">          key=&#123;route.path&#125;</span><br><span class="line">          path=&#123;route.path&#125;</span><br><span class="line">          component=&#123;Loadable(&#123;</span><br><span class="line">            loader: route.load,</span><br><span class="line">            loading: <span class="function">() =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> /&gt;</span></span>,</span><br><span class="line">            <span class="function"><span class="title">render</span>(<span class="params">&#123; <span class="keyword">default</span>: Loaded &#125;: <span class="built_in">any</span>, props: <span class="built_in">any</span></span>)</span> &#123;</span><br><span class="line">              <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Loaded</span> &#123;<span class="attr">...props</span>&#125; /&gt;</span></span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      )</span><br><span class="line">    &#125;)&#125;</span><br><span class="line">  &lt;/Switch&gt;</span><br><span class="line">&lt;/Router&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
+<li>react-router 介绍文档<a target="_blank" rel="noopener" href="https://reactrouter.com/web/api/BrowserRouter">react-router</a></li>
+<li>使用 React Loadable 实现 代码拆分：<a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/react-react-loadable">code splitting</a></li>
+</ul>
+
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-12-02
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+        <a href="/categories/how-to/" class="post-cats__link button">how to</a>
+    
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/2020/12/02/how-to-use-style-in-react/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            how-to-use-style-in-react
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/12/01/how-to-create-react/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            如何创建 React 项目
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2020&nbsp;-&nbsp;2020 <a href="/">lianzixin</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>

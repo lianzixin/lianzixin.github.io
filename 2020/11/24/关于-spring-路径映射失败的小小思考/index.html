@@ -24,6 +24,8 @@
 <title>关于 spring 路径映射失败的小小思考 | lianzixin</title>
 
 
+    <meta name="keywords" content="spring, back-end">
+
 
 
 
@@ -37,8 +39,10 @@
 <meta property="og:description" content="起因在某一天写项目的时候，前端使用 react，后端使用 Spring boot，明明使用 Spring 写了 Controller，却老是报 java.lang.NullPointerException 异常，控制器如下 12@GetMapping(&quot;&#x2F;image&#x2F;&amp;#123;id&amp;#125;&quot;)public void getImage(@PathVari">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-24T03:36:30.000Z">
-<meta property="article:modified_time" content="2020-11-24T03:50:52.886Z">
+<meta property="article:modified_time" content="2020-11-27T03:38:02.700Z">
 <meta property="article:author" content="lianzixin">
+<meta property="article:tag" content="spring">
+<meta property="article:tag" content="back-end">
 <meta name="twitter:card" content="summary_large_image">
 
 
@@ -123,7 +127,7 @@
     2020-11-24
 </a>
         
-    <span class="separate-dot"></span><a href="/categories/spring/" class="button">spring</a>
+    <span class="separate-dot"></span><a href="/categories/back-end/" class="button">back-end</a>
 
  
         
@@ -149,6 +153,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;&#x2F;image&quot;)</span><br><span class="line">public void getImage(@RequestParam BigInteger id, HttpServletResponse response) &#123;&#125;</span><br></pre></td></tr></table></figure>
 
 <p>查了许多文章，首先确定 Spring @PathVariable 注解是没有问题的，那么问题出在哪了，这时候只能祭出 debug 大法了。</p>
+<h1 id="报错堆栈"><a href="#报错堆栈" class="headerlink" title="报错堆栈"></a>报错堆栈</h1><p>首先在返回自定义错误前，打个断点，看看堆栈信息，从函数名可以简要的判断每个函数执行的内容</p>
 <h1 id="Spring-分发映射调用链"><a href="#Spring-分发映射调用链" class="headerlink" title="Spring 分发映射调用链"></a>Spring 分发映射调用链</h1><h2 id="doDispatch-函数"><a href="#doDispatch-函数" class="headerlink" title="doDispatch 函数"></a>doDispatch 函数</h2><p>首先进入 DispatcherServlet.java ，在 1000 行的 doDispatch 函数下断点，可以大致猜出，该函数从注册的控制器中找出一个与请求路径最匹配的控制器，注释内容如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Process the actual dispatching to the handler.</span></span><br><span class="line"><span class="comment">  * &lt;p&gt;The handler will be obtained by applying the servlet&#x27;s HandlerMappings in order.</span></span><br><span class="line"><span class="comment">  * The HandlerAdapter will be obtained by querying the servlet&#x27;s installed HandlerAdapters</span></span><br><span class="line"><span class="comment">  * to find the first that supports the handler class.</span></span><br><span class="line"><span class="comment">  * &lt;p&gt;All HTTP methods are handled by this method. It&#x27;s up to HandlerAdapters or handlers</span></span><br><span class="line"><span class="comment">  * themselves to decide which methods are acceptable.</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> request current HTTP request</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> response current HTTP response</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@throws</span> Exception in case of any kind of processing failure</span></span><br><span class="line"><span class="comment">  */</span></span><br></pre></td></tr></table></figure>
 
@@ -170,23 +175,30 @@
 <h2 id="getMatchingCondition-函数"><a href="#getMatchingCondition-函数" class="headerlink" title="getMatchingCondition 函数"></a>getMatchingCondition 函数</h2><p>进入后为 info.getMatchingCondition 方法，继续进入，进入到 RequestMappingInfo 文件的 210 行，这就是最终确定是否匹配的方法了，确定条件是否满足，满足则返回控制器<br>可以看出来该处进行了请求方法，请求头、请求模式的比较，只有全部符合，才会返回对应控制器。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Checks if all conditions in this request mapping info match the provided request and returns</span></span><br><span class="line"><span class="comment">  * a potentially new request mapping info with conditions tailored to the current request.</span></span><br><span class="line"><span class="comment">  * &lt;p&gt;For example the returned instance may contain the subset of URL patterns that match to</span></span><br><span class="line"><span class="comment">  * the current request, sorted with best matching patterns on top.</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@return</span> a new instance in case all conditions match; or &#123;<span class="doctag">@code</span> null&#125; otherwise</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="meta">@Nullable</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RequestMappingInfo <span class="title">getMatchingCondition</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line"> <span class="comment">/*进行匹配*/</span></span><br><span class="line"> ...</span><br><span class="line"> <span class="keyword">return</span> <span class="keyword">new</span> RequestMappingInfo(<span class="keyword">this</span>.name, patterns,</span><br><span class="line">   methods, params, headers, consumes, produces, custom.getCondition());</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="重新提出问题"><a href="#重新提出问题" class="headerlink" title="重新提出问题"></a>重新提出问题</h1><p>抛出异常的最可能的地方也就是这里了，那么回到最初的问题，@Pathvariable 注解为什么会失效呢，打断点到与 @Pathvariable 控制器最近的控制器，这时候可以使用 IDEA 的条件断点模式，发现总是执行不到带有 @Pathvariable 控制器的匹配上，最终发现，罪魁祸首是下面的控制器</p>
+<h1 id="重新解决问题"><a href="#重新解决问题" class="headerlink" title="重新解决问题"></a>重新解决问题</h1><p>抛出异常的最可能的地方也就是这里了，那么回到最初的问题，@Pathvariable 注解为什么会失效呢，打断点到与 @Pathvariable 控制器最近的控制器，这时候可以使用 IDEA 的条件断点模式，发现总是执行不到带有 @Pathvariable 控制器的匹配上，最终发现，罪魁祸首是下面的控制器</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &#123;&quot;/&quot;,&quot;&quot;&#125;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">Index</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>具体原因就是该控制器在 List 中的顺序比带有 @Pathvariable 控制器前，因此当进行到该处控制器匹配的时候，第二个值 “” 被 spring 解释为 null，直接在匹配具体逻辑就直接报错，因此把这个控制器去掉，就不会报空指针错误了</p>
+<p>具体原因就是该控制器在 List 中的顺序比带有 @Pathvariable 控制器前，因此当进行到该处控制器匹配的时候，第二个值 “” 被 spring 解释为 null，直接在匹配具体逻辑就直接报错，那具体逻辑又是为什么会报错呢</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//getMatchingCondition 中的获取模式</span></span><br><span class="line"><span class="keyword">this</span>.patternsCondition.getMatchingCondition(request);</span><br><span class="line"></span><br><span class="line"><span class="comment">//getMatchingCondition 中会取出访问的路径，然后去获取对应模式</span></span><br><span class="line">String lookupPath = <span class="keyword">this</span>.pathHelper.getLookupPathForRequest(request, HandlerMapping.LOOKUP_PATH);</span><br><span class="line">List&lt;String&gt; matches = getMatchingPatterns(lookupPath);</span><br><span class="line"></span><br><span class="line"><span class="comment">//getMatchingPatterns 查看模式中有没有真正匹配</span></span><br><span class="line"><span class="comment">//在 this.patterns 取出 pattern ，但是 &quot;&quot; 已经被解释成 null 了，在进行最后的 getMatchingPattern 方法 </span></span><br><span class="line"><span class="keyword">for</span> (String pattern : <span class="keyword">this</span>.patterns) &#123;</span><br><span class="line">  String match = getMatchingPattern(pattern, lookupPath);</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line"><span class="comment">//getMatchingPattern 首先会使用 pattern 去判断是否相等，这就是报错的罪魁祸首</span></span><br><span class="line"><span class="keyword">if</span> (pattern.equals(lookupPath)) &#123;</span><br><span class="line">    <span class="keyword">return</span> pattern;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>本质原因就是 spring 将空字符串当成 null 进行了注册，此时的注册器就是 {GET null}<br>到后面又取出值去做 equals 比较，就会报 NPE 了。</p>
+<p>因此把这个值去掉，就不会报空指针错误了，</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>由于是接手前人的项目，所有东西大部分都得推倒重来，偶尔遇到几个坑也是有的。<br>对于 Spring 映射，最好不要使用空字符串为值，因为会被当做 null，这时候就会报 NullPointer 错误了，只需要把对应控制器删除，该问题就会得到解决。<br>收工！</p>
 
     </div>
      
     <div class="post-footer__meta">
     <p>
-        updated at 2020-11-24
+        updated at 2020-11-27
     </p>
 </div> 
     <div class="post-meta__cats">
     
-        <a href="/categories/spring/" class="post-cats__link button">spring</a>
+        <a href="/categories/back-end/" class="post-cats__link button">back-end</a>
     
+    
+        <a href="/tags/spring/" class="post-tags__link button"># spring</a>
+    
+        <a href="/tags/back-end/" class="post-tags__link button"># back-end</a>
     
 </div> 
 </article>
@@ -204,7 +216,7 @@
                             Previous Post
                         </div>
                         <div class="nav__title">
-                            关于二叉树的解题模板
+                            关于二叉树的解题模板（基于 leetcode 简单题）
                         </div>
                     </div>
                 </a>

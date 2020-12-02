@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+
+
+    <!-- meta -->
+
+
+<title>Spring 实战（第一期） | lianzixin</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="Spring 入门什么是 Spring首先介绍 Spring 的基本概念，众所周知，应用程序都是由许多组件组成的，每个组件负责自身部分功能，并与其他组件配合完成工作。运行应用程序时，就需要以某种方式创建组件并将其互相引用。 Spring 的核心是一个容器，称为 Spring 应用程序上下文，用于创建和管理应用程序组件。这些组件在 Spring 应用程序上下文连接并构成一个完整的程序。 将 bean">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring 实战（第一期）">
+<meta property="og:url" content="http://lianzixin.github.io/2020/12/02/Spring-%E5%AE%9E%E6%88%98%EF%BC%88%E7%AC%AC%E4%B8%80%E6%9C%9F%EF%BC%89/index.html">
+<meta property="og:site_name" content="lianzixin">
+<meta property="og:description" content="Spring 入门什么是 Spring首先介绍 Spring 的基本概念，众所周知，应用程序都是由许多组件组成的，每个组件负责自身部分功能，并与其他组件配合完成工作。运行应用程序时，就需要以某种方式创建组件并将其互相引用。 Spring 的核心是一个容器，称为 Spring 应用程序上下文，用于创建和管理应用程序组件。这些组件在 Spring 应用程序上下文连接并构成一个完整的程序。 将 bean">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-02T13:22:53.000Z">
+<meta property="article:modified_time" content="2020-12-02T13:22:56.251Z">
+<meta property="article:author" content="lianzixin">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">lianzixin</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        Spring 实战（第一期）
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/12/" class="post-meta__date button">
+    2020-12-02
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/spring/" class="button">spring</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h1 id="Spring-入门"><a href="#Spring-入门" class="headerlink" title="Spring 入门"></a>Spring 入门</h1><h2 id="什么是-Spring"><a href="#什么是-Spring" class="headerlink" title="什么是 Spring"></a>什么是 Spring</h2><p>首先介绍 Spring 的基本概念，众所周知，应用程序都是由许多组件组成的，每个组件负责自身部分功能，并与其他组件配合完成工作。运行应用程序时，就需要以某种方式创建组件并将其互相引用。</p>
+<p>Spring 的核心是一个容器，称为 <strong>Spring 应用程序上下文</strong>，用于创建和管理应用程序组件。这些组件在 Spring 应用程序上下文连接并构成一个完整的程序。</p>
+<p>将 bean （组件）连接在一起的行为是基于一种称为<strong>依赖注入</strong>的模式。依赖项注入的应用程序 不依赖 组件自身创建 和 维护它们依赖的其他 bean 的生命周期，而是依赖于单独的实体（容器）来创建和维护所有组件，并将这些组件注入需要它们的 bean。</p>
+<p>例如，假设在应用程序的许多组件，需要处理两个组件：inventory service（获取库存）、product service（提供产品信息）。product service 取决于 inventory service<br>下图说明了 bean 与 Spring 应用程序上下文之间的关系</p>
+<p>从历史上看，引导 Spring 应用程序上下文将 bean 连接在一起的方式是使用一个或多个 XML 文件。例如以下 XML 声明两个 bean，通过构造函数进行 bean 注入</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;inventoryService&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.example.InventoryService&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;productService&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.example.ProductService&quot;</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">&quot;inventoryService&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在最新版本中，基于 JAVA 的配置更常见，@Configuration 表明是一个配置类，将为 Spring 应用上下文提供 beans，配置类方法带有 @Bean，指示返回的对象作为 beans 添加到 Spring 应用上下文中（提供的 bean ID 将与定义的方法名称相同）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceConfiguration</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> InventoryService <span class="title">inventoryService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> InventoryService();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ProductService <span class="title">productService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ProductService(inventoryService());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>自动配置技术源于<strong>自动装配</strong>和<strong>组件扫描</strong>。借助组件扫描，Spring 可以自动从应用程序的类发现组件，并将其创建为 Spring 上下文的 bean。通过自动装配，Spring 自动将组件与依赖的其他 bean 一起注入。</p>
+<p>Spring boot 是 Spring 框架的扩展，提供了多项生产力增强功能，其中最著名的就是<strong>自动配置</strong>，根据类路径的条目、环境变量和其他因素，合理猜测需要配置哪些组件，并将它们连接在一起。</p>
+<h2 id="初始化应用程序"><a href="#初始化应用程序" class="headerlink" title="初始化应用程序"></a>初始化应用程序</h2><p>初始化 Spring 应用程序有多个选择，依靠 Spring Initialzr 引导应用程序的创建是最合适的，也是业界使用的最多的方式。</p>
+<ul>
+<li>从 Web 应用程序 <a target="_blank" rel="noopener" href="http://start.spring.io/">http://start.spring.io</a> 创建</li>
+<li>使用 Spring Boot 命令行接口从命令行创建</li>
+<li>使用 Spring Tool Suite 创建一个新项目的时候</li>
+</ul>
+<h2 id="使用-Spring-Tool-Suite-初始化-Spring-项目"><a href="#使用-Spring-Tool-Suite-初始化-Spring-项目" class="headerlink" title="使用 Spring Tool Suite 初始化 Spring 项目"></a>使用 Spring Tool Suite 初始化 Spring 项目</h2><h2 id="Spring-项目结构"><a href="#Spring-项目结构" class="headerlink" title="Spring 项目结构"></a>Spring 项目结构</h2><p>在 IDEA 中加载项目后，项目结构将如下所示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">taco-cloud</span><br><span class="line">  + src&#x2F;main&#x2F;java               &#x2F;&#x2F;此处存放源代码</span><br><span class="line">    + TacoCloudApplacation.java              &#x2F;&#x2F;引导项目的 Spring Boot 主类  </span><br><span class="line">  + src&#x2F;main&#x2F;resources          &#x2F;&#x2F;此处存放非 JAVA 资源</span><br><span class="line">    + static                    &#x2F;&#x2F;存放静态资源</span><br><span class="line">    + templates                 &#x2F;&#x2F;存放模板文件</span><br><span class="line">    + application.properties    &#x2F;&#x2F;配置属性</span><br><span class="line">  + src&#x2F;test&#x2F;java               &#x2F;&#x2F;此处存放测试代码</span><br><span class="line">  + JRE System Library          </span><br><span class="line">  + Maven Dependencies</span><br><span class="line">  + src</span><br><span class="line">  + target</span><br><span class="line">  + mvnw                        &#x2F;&#x2F;包装器脚本</span><br><span class="line">  + mvnw.cmd                    &#x2F;&#x2F;包装器脚本</span><br><span class="line">  + pom.xml                     &#x2F;&#x2F;Maven 依赖规范</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pom-xml-依赖规范"><a href="#Pom-xml-依赖规范" class="headerlink" title="Pom.xml 依赖规范"></a>Pom.xml 依赖规范</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>sia<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>taco-cloud<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>taco-cloud<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>Taco Cloud Example<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.4.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">project.reporting.outputEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.reporting.outputEncoding</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>selenium-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>htmlunit-driver<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>第一个项为<code>&lt;packaging&gt;</code>元素，选择将应用程序构建为可执行的 JAR 文件，而不是 WAR 文件。传统的 JAVA web 应用程序被打包为 WAR 文件，而 JAR 文件是库和偶尔使用的桌面 UI 应用程序的首选打包方式。</p>
+<p>为什么打包成 JAR 文件，因为所有的 JAVA 云平台都能够运行可执行的 JAR 文件，因此，Spring Initialzr 默认为 JAR 打包。</p>
+<p>如果打算将应用程序部署到传统的 Java 应用服务器，那么需要选择 WAR 打包并包含 web 初始类。</p>
+<p>接下来为<code>&lt;parent&gt;</code>元素，注意<code>&lt;version&gt;</code>子元素。这将指定项目将<code>spring-boot-start-parent</code>作为父 POM，为 Spring 项目中常用的几个库提供依赖项管理。对于父 POM 覆盖的库，不必指定版本，因为是从父 POM 继承的。</p>
+<p>讨论依赖项时，在<code>&lt;denpendencies&gt;</code>元素下声明了三个依赖项。所有这三个依赖项的 artifact ID 中都有 starter 这个词。</p>
+<p>Spring Boot starter 依赖项的特殊之处在于，本身没有任何库代码，而是间接地引入其他库，好处如下：</p>
+<ul>
+<li>构建文件书写小得多，更容易管理</li>
+<li>根据提供功能来考虑依赖关系，而不是库名</li>
+<li>不用担心版本问题</li>
+</ul>
+<p>最后部分为 Spring Boot 插件，这个插件执行一些重要功能：</p>
+<ul>
+<li>提供了一个 Maven 编译目标</li>
+<li>确保所有依赖都包含在可执行的 JAR 文件中</li>
+<li>在 JAR 文件生成一个 manifest 文件，表示引导类是可执行 JAR 的主类</li>
+</ul>
+<h3 id="引导应用程序"><a href="#引导应用程序" class="headerlink" title="引导应用程序"></a>引导应用程序</h3><p>运行 JAR 文件时，需要有一个主类来执行，需要至少一个最小的 Spring 配置文件来引导应用程序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> tacos;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TacoCloudApplication</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(TacoCloudApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>@SpringBootApplication</code> 注释清楚地表明了这是一个 Spring 引导应用程序，但是该注解包含更多内容</p>
+<ul>
+<li><code>@SpringBootConfiguration</code>：指定类为配置类</li>
+<li><code>@EnableAutoConfiguration</code>：启用 Spring 自动配置，告诉 Spring Boot 自动配置认为需要的任何组件</li>
+<li><code>@ComponentScan</code>：启用 Spring 组件扫描，允许声明其他带有<code>@Component</code>，<code>@Controller</code>，<code>@Service</code>等注释的类，以便让 Spring 自动发现它们并注册为 Spring 应用程序上下文的组件。</li>
+</ul>
+<p>除了上述的注解外，另外一个重要部分为 <code>main</code> 方法。这个方法将在执行 JAR 文件时运行。</p>
+<p><code>main</code>方法调用 SpringApplication 类上的静态 <code>run</code> 方法，该方法创建 Spring 应用程序上下文，传递给 <code>run</code> 方法的参数为一个配置类和命令行参数。</p>
+<h3 id="测试应用程序"><a href="#测试应用程序" class="headerlink" title="测试应用程序"></a>测试应用程序</h3><p>需要使用 <code>@RunWith(SpringRunner.class)</code> 注释的类。<code>@RunWith</code>是一个 JUnit 注释，提供了一个测试运行器来引导 JUnit 运行测试用例。<br><code>@SpringBootTest</code> 告诉 Junit 使用 Spring 引导功能引导测试。可以看作是在 <code>main</code> 方法中调用 <code>SpringAllication.run</code> 的测试类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> tacos;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringRunner;</span><br><span class="line">​</span><br><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TacoCloudApplicationTests</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="编写-Spring-应用程序"><a href="#编写-Spring-应用程序" class="headerlink" title="编写 Spring 应用程序"></a>编写 Spring 应用程序</h1><p>刚开始时，添加到 Taco Cloud 应用的第一个功能是主页</p>
+<ul>
+<li>一个处理主页请求的控制器类</li>
+<li>一个视图模板，定义了主页的外观</li>
+</ul>
+<h2 id="处理-Web-请求"><a href="#处理-Web-请求" class="headerlink" title="处理 Web 请求"></a>处理 Web 请求</h2><p>Spring 附带一个强大的 Web 框架，称为 Spring MVC. Spring MVC 的核心是控制器的概念，这是一个处理请求并使用某种信息进行响应的类。<br>对于面向浏览器的应用程序，控制器的响应方式是可选地填充模型数据并将请求传递给视图，以生成返回给浏览器的 HTML.</p>
+<p>以下代码清单将是处理根路径的请求，不进行任何填充模型数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> tacos;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line">​</span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HomeController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">home</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;home&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，这个类用 <code>@Controller</code> 注释，<code>@Controller</code> 本身的目的就是将类识别为<strong>组件扫描</strong>的组件。由于 <code>HomeContorller</code> 是由 <code>@Contorller</code> 注释，因此 Spring 的组件扫描会自动发现他，并在 Spring 应用程序上下文中创建一个 <code>HomeContorller</code> 实例作为 <code>bean</code></p>
+<p>实际上，其他注释（<code>@Component</code>、<code>@Service</code>、<code>@Repository</code>）的用途和 <code>@Controller </code>类似。使用其他带有意义的注释注解，能够更好的描述该组件在应用程序中的角色.</p>
+<p>其中 <code>home</code> 方法非常简单，使用 <code>GetMapping</code> 进行注释，以指示如果接收到根路径 <code>/</code> 的 HTTP GET 请求，则此方法应该处理该请求。</p>
+<p>方法的返回值表明返回了一个 <code>home</code> 的 String 值，此值在 Thymeleaf 末班中还会被解释为视图的逻辑名称</p>
+<p>什么是模板名称</p>
+<p>模板名称由逻辑试图名称派生而来，它的前缀是 <code>/templates/</code>，后缀是 <code>.html</code>。模板的结果路径是 <code>/templates/home.html</code>. 因此需要将模板放在项目的<code>/src/main/resources/templates/home.html</code>中</p>
+<h2 id="定义视图"><a href="#定义视图" class="headerlink" title="定义视图"></a>定义视图</h2><p>以下代码定义了主页的模板</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.w3.org/1999/xhtml&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Taco Cloud<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Welcome to...<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">th:src</span>=<span class="string">&quot;@&#123;/images/TacoCloud.png&#125;&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其中 <code>&lt;img th:src=&quot;&quot; /&gt;</code> 为 thymeleaf 模板代码。<code>th:src</code>属性和一个<code>@&#123;...&#125;</code>表达式引用具有上下文相对路径的图片。</p>
+<p>该图片是通过上下文相对路径 <code>/images/TacoCloud.png</code> 进行引用的。像图片这样的静态内容保存在 <code>/src/main/resources/static</code> 文件夹中。这也意味着该图片的路径为<br><code>/src/mian/resources/static/images/TacoCloud.png</code>中</p>
+<h2 id="测试控制器"><a href="#测试控制器" class="headerlink" title="测试控制器"></a>测试控制器</h2><p>对于 HTML 页面的内容进行断言时，将使用以下代码进行测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> tacos;</span><br><span class="line">​</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.hamcrest.Matchers.containsString;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;</span><br><span class="line">​</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringRunner;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.web.servlet.MockMvc;</span><br><span class="line">​</span><br><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@WebMvcTest(HomeController.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HomeControllerTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> MockMvc mockMvc;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testHomePage</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        mockMvc.perform(get(<span class="string">&quot;/&quot;</span>))</span><br><span class="line">            .andExpect(status().isOk())</span><br><span class="line">            .andExpect(view().name(<span class="string">&quot;home&quot;</span>))</span><br><span class="line">            .andExpect(content().string(containsString(<span class="string">&quot;Welcome to...&quot;</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>HomeContorllerTest</code> 使用 <code>@WebMvcTest</code> 注释，而不是 <code>@SpringBootTest</code> 标记。安排测试在 Spring MVC 应用程序的上下文中运行。</p>
+<p><code>@WebMvcTest</code> 为测试 Spring MVC 提供 Spring 支持。<br><code>testHomePage</code> 方法定义了要对主页执行的测试。从 <code>MockMvc</code> 对象开始，执行针对 <code>/</code> 的 HTTP GET 请求。该请求规定了下列期望值：</p>
+<ul>
+<li>响应应该有一个 200 的状态</li>
+<li>视图应该有一个合理的主页名称</li>
+<li>呈现的视图应该包含 “Welcome to…”</li>
+</ul>
+<p>如果 <code>MockMvc</code> 对象执行请求之后，这些期望中的任何一个都没有满足，那么测试就会失败。</p>
+<h2 id="Spring-Boot-DevTools"><a href="#Spring-Boot-DevTools" class="headerlink" title="Spring Boot DevTools"></a>Spring Boot DevTools</h2><p>DevTools 提供了方便的开发同步工具</p>
+<ul>
+<li>当代码更改时自动重启应用程序</li>
+<li>当浏览器为目标的资源发生变化时，浏览器自动刷新</li>
+<li>自动禁用模板缓存</li>
+<li>如果 H2 数据库正在使用，则在 H2 控制台中构建</li>
+</ul>
+<p><strong>自动重启应用程序</strong><br>DevTools 对项目中的 Java 代码和属性文件进行更改，并在短时间查看这些更改的应用。<br>应用程序被加载到 JVM 中的两个单独的类加载器中。</p>
+<ul>
+<li>频繁更改的 源代码——类加载器</li>
+<li>几乎不变动的 依赖库——类加载器</li>
+</ul>
+<p>当检测到更改时，DevTools 只重新加载 源代码——类加载器，并重新启动 Spring 应用程序上下文。<br>这种策略的缺点就是对依赖项的更改在自动重新启动时不可用。</p>
+<p><strong>禁用模板缓存</strong><br>缓存模板使得不可能在应用程序运行时更改模板，并在刷新浏览器后查看结果。<br>DevTools 通过自动禁用所有模板缓存来解决这个问题</p>
+<p><strong>H2 控制台</strong><br>DevTools 自动启用 H2 控制台，可通过 <a target="_blank" rel="noopener" href="http://localhost:8080/h2-console">http://localhost:8080/h2-console</a> 进行访问。</p>
+<h1 id="Spring-核心框架"><a href="#Spring-核心框架" class="headerlink" title="Spring 核心框架"></a>Spring 核心框架</h1><h2 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h2><p>Spring Boot 特性</p>
+<ul>
+<li>启动依赖</li>
+<li>自动配置</li>
+<li>Actuator 提供对应用程序内部工作方式的运行时监控</li>
+<li>环境属性规范</li>
+<li>核心框架的测试辅助之外，还有额外的测试支持</li>
+</ul>
+<h2 id="Spring-Data"><a href="#Spring-Data" class="headerlink" title="Spring Data"></a>Spring Data</h2><p>Spring Data 能够处理几种不同类型的数据库，包括关系型（JPA）、文档型（Mongo）、图形（Neo4j）等</p>
+<h2 id="Spring-Security"><a href="#Spring-Security" class="headerlink" title="Spring Security"></a>Spring Security</h2><p>Spring Security 解决了广泛的应用程序安全性需求，包括身份验证、授权和 API 安全性</p>
+<h2 id="Spring-Cloud"><a href="#Spring-Cloud" class="headerlink" title="Spring Cloud"></a>Spring Cloud</h2><p>应用程序开发不再将应用程序作为单个部署单元来开发，而是由几个称为<strong>微服务</strong>的单个部署单元组成应用程序。 </p>
+
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-12-02
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+        <a href="/categories/spring/" class="post-cats__link button">spring</a>
+    
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/12/02/how-to-use-style-in-react/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            how-to-use-style-in-react
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2020&nbsp;-&nbsp;2020 <a href="/">lianzixin</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
