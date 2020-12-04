@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+
+
+    <!-- meta -->
+
+
+<title>spring-JPA 接口规范 | lianzixin</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="背景Spring Data JPA 是较大的 Spring Data 系列的一部分，可轻松实现基于 JPA 的存储库。该模块处理对基于 JPA 的数据访问层的增强支持。它使构建使用数据访问技术的 Spring 支持的应用程序变得更加容易。 Spring Data JPA 为 Java Persistence API（JPA） 提供了存储库支持。它简化了需要访问 JPA 数据源的应用程序的开发。 声">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring-JPA 接口规范">
+<meta property="og:url" content="http://lianzixin.github.io/2020/12/04/spring-JPA/index.html">
+<meta property="og:site_name" content="lianzixin">
+<meta property="og:description" content="背景Spring Data JPA 是较大的 Spring Data 系列的一部分，可轻松实现基于 JPA 的存储库。该模块处理对基于 JPA 的数据访问层的增强支持。它使构建使用数据访问技术的 Spring 支持的应用程序变得更加容易。 Spring Data JPA 为 Java Persistence API（JPA） 提供了存储库支持。它简化了需要访问 JPA 数据源的应用程序的开发。 声">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-04T06:56:40.000Z">
+<meta property="article:modified_time" content="2020-12-04T06:56:44.905Z">
+<meta property="article:author" content="lianzixin">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">lianzixin</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        spring-JPA 接口规范
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/12/" class="post-meta__date button">
+    2020-12-04
+</a>
+        
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p><code>Spring Data JPA</code> 是较大的 <code>Spring Data</code> 系列的一部分，可轻松实现基于 <code>JPA</code> 的存储库。该模块处理对基于 <code>JPA</code> 的数据访问层的增强支持。它使构建使用数据访问技术的 <code>Spring</code> 支持的应用程序变得更加容易。</p>
+<p><code>Spring Data JPA</code> 为 <code>Java Persistence API（JPA）</code> 提供了存储库支持。它简化了需要访问 <code>JPA</code> 数据源的应用程序的开发。</p>
+<h1 id="声明依赖"><a href="#声明依赖" class="headerlink" title="声明依赖"></a>声明依赖</h1><p>在 pom.xml 里使用以下代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.data<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="使用-Repository"><a href="#使用-Repository" class="headerlink" title="使用 Repository"></a>使用 Repository</h1><p><code>Spring Data</code> 存储库抽象中的中央接口是 <code>Repository</code>。<br>它需要类以及类的 <code>ID</code> 类型作为类型参数来进行管理。<br>该接口主要用作标记接口，以捕获要使用的类型并帮助您发现扩展该接口的接口。</p>
+<h2 id="接口介绍"><a href="#接口介绍" class="headerlink" title="接口介绍"></a>接口介绍</h2><p><strong>CrudRepository 接口</strong>：为正在管理的实体类提供复杂的CRUD功能</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CrudRepository</span>&lt;<span class="title">T</span>, <span class="title">ID</span>&gt; <span class="keyword">extends</span> <span class="title">Repository</span>&lt;<span class="title">T</span>, <span class="title">ID</span>&gt; </span>&#123;</span><br><span class="line">  &lt;S extends T&gt; <span class="function">S <span class="title">save</span><span class="params">(S entity)</span></span>;      </span><br><span class="line">  <span class="function">Optional&lt;T&gt; <span class="title">findById</span><span class="params">(ID primaryKey)</span></span>; </span><br><span class="line">  <span class="function">Iterable&lt;T&gt; <span class="title">findAll</span><span class="params">()</span></span>;               </span><br><span class="line">  <span class="function"><span class="keyword">long</span> <span class="title">count</span><span class="params">()</span></span>;                        </span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">delete</span><span class="params">(T entity)</span></span>;               </span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">existsById</span><span class="params">(ID primaryKey)</span></span>;   </span><br><span class="line">  <span class="comment">// … more functionality omitted.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h2><p>继承接口，指定类与类所用的 <code>ID</code> 类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="keyword">extends</span> <span class="title">CrudRepository</span>&lt;<span class="title">User</span>, <span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="声明查询方法"><a href="#声明查询方法" class="headerlink" title="声明查询方法"></a>声明查询方法</h2><p><strong>使用命名约定</strong><br>通常，JPA 可通过函数签名自动生成对应的 SQL 语句，以下是命名约定</p>
+<table>
+<thead>
+<tr>
+<th align="left">关键词</th>
+<th align="left">示例</th>
+<th align="left">对应的 JPQL 片段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Distinct</td>
+<td align="left">findDistinctByLastnameAndFirstname</td>
+<td align="left">select distinct …​ where x.lastname = ?1 and x.firstname = ?2</td>
+</tr>
+<tr>
+<td align="left">And</td>
+<td align="left">findByLastnameAndFirstname</td>
+<td align="left">… where x.lastname = ?1 and x.firstname = ?2</td>
+</tr>
+<tr>
+<td align="left">Or</td>
+<td align="left">findByLastnameOrFirstname</td>
+<td align="left">… where x.lastname = ?1 or x.firstname = ?2</td>
+</tr>
+<tr>
+<td align="left">Is， Equals</td>
+<td align="left">findByFirstname，findByFirstnameIs，findByFirstnameEquals</td>
+<td align="left">… where x.firstname = ?1</td>
+</tr>
+<tr>
+<td align="left">Between</td>
+<td align="left">findByStartDateBetween</td>
+<td align="left">… where x.startDate between ?1 and ?2</td>
+</tr>
+<tr>
+<td align="left">LessThan</td>
+<td align="left">findByAgeLessThan</td>
+<td align="left">… where x.age &lt; ?1</td>
+</tr>
+<tr>
+<td align="left">LessThanEqual</td>
+<td align="left">findByAgeLessThanEqual</td>
+<td align="left">… where x.age &lt;= ?1</td>
+</tr>
+<tr>
+<td align="left">GreaterThan</td>
+<td align="left">findByAgeGreaterThan</td>
+<td align="left">… where x.age &gt; ?1</td>
+</tr>
+<tr>
+<td align="left">GreaterThanEqual</td>
+<td align="left">findByAgeGreaterThanEqual</td>
+<td align="left">… where x.age &gt;= ?1</td>
+</tr>
+<tr>
+<td align="left">After</td>
+<td align="left">findByStartDateAfter</td>
+<td align="left">… where x.startDate &gt; ?1</td>
+</tr>
+<tr>
+<td align="left">Before</td>
+<td align="left">findByStartDateBefore</td>
+<td align="left">… where x.startDate &lt; ?1</td>
+</tr>
+<tr>
+<td align="left">IsNull， Null</td>
+<td align="left">findByAge(Is)Null</td>
+<td align="left">… where x.age is null</td>
+</tr>
+<tr>
+<td align="left">IsNotNull， NotNull</td>
+<td align="left">findByAge(Is)NotNull</td>
+<td align="left">… where x.age not null</td>
+</tr>
+<tr>
+<td align="left">Like</td>
+<td align="left">findByFirstnameLike</td>
+<td align="left">… where x.firstname like ?1</td>
+</tr>
+<tr>
+<td align="left">NotLike</td>
+<td align="left">findByFirstnameNotLike</td>
+<td align="left">… where x.firstname not like ?1</td>
+</tr>
+<tr>
+<td align="left">StartingWith</td>
+<td align="left">findByFirstnameStartingWith</td>
+<td align="left">… where x.firstname like ?1（参数附后%）</td>
+</tr>
+<tr>
+<td align="left">EndingWith</td>
+<td align="left">findByFirstnameEndingWith</td>
+<td align="left">… where x.firstname like ?1（参数加前缀%）</td>
+</tr>
+<tr>
+<td align="left">Containing</td>
+<td align="left">findByFirstnameContaining</td>
+<td align="left">… where x.firstname like ?1（参数绑定在中%）</td>
+</tr>
+<tr>
+<td align="left">OrderBy</td>
+<td align="left">findByAgeOrderByLastnameDesc</td>
+<td align="left">… where x.age = ?1 order by x.lastname desc</td>
+</tr>
+<tr>
+<td align="left">Not</td>
+<td align="left">findByLastnameNot</td>
+<td align="left">… where x.lastname &lt;&gt; ?1</td>
+</tr>
+<tr>
+<td align="left">In</td>
+<td align="left">findByAgeIn(Collection<Age> ages)</td>
+<td align="left">… where x.age in ?1</td>
+</tr>
+<tr>
+<td align="left">NotIn</td>
+<td align="left">findByAgeNotIn(Collection<Age> ages)</td>
+<td align="left">… where x.age not in ?1</td>
+</tr>
+<tr>
+<td align="left">True</td>
+<td align="left">findByActiveTrue()</td>
+<td align="left">… where x.active = true</td>
+</tr>
+<tr>
+<td align="left">False</td>
+<td align="left">findByActiveFalse()</td>
+<td align="left">… where x.active = false</td>
+</tr>
+<tr>
+<td align="left">IgnoreCase</td>
+<td align="left">findByFirstnameIgnoreCase</td>
+<td align="left">… where UPPER(x.firstname) = UPPER(?1)</td>
+</tr>
+</tbody></table>
+<p>通过以上命名规范，可直接通过函数名称映射到对应 SQL 语句，从而达到不写 SQL 语句的目的.<br>对于分页内容，可通过传递 Pageable 参数进行分页处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Page&lt;User&gt; <span class="title">findByLastname</span><span class="params">(String lastname, Pageable pageable)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>对于排序内容，可通过传递 Sort 参数进行排序处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List&lt;User&gt; <span class="title">findByLastname</span><span class="params">(String lastname, Pageable pageable)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用 @Query 注解</strong><br>过于复杂的 SQL 语句，可通过 <code>@Query</code> 注解手动书写，比如在<strong>多条件查询</strong>中忽略传递的 NULL 值<br>注：<code>Query</code> 中的参数引用使用 <code>?参数位置</code> 或 <code>:参数名</code> 进行引用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Query(&quot;select u from User u where (:name is null or u.name =:name)&quot;)</span></span><br><span class="line"><span class="function">Page&lt;User&gt; <span class="title">findAll</span><span class="params">(String name, Pageable pageable)</span></span>;</span><br></pre></td></tr></table></figure>
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-12-04
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/12/02/Spring-%E5%AE%9E%E6%88%98%EF%BC%88%E7%AC%AC%E4%B8%80%E6%9C%9F%EF%BC%89/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            Spring 实战（第一期）
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2020&nbsp;-&nbsp;2020 <a href="/">lianzixin</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
