@@ -37,7 +37,7 @@
 <meta property="og:description" content="安装所需依赖 react-router-dom：npm install react-router-dom react-loadable：npm install react-loadable  依赖简要介绍Router——路由器当开始一个新项目时，应该决定要使用哪种 router。对于在浏览器运行的项目，可以选择  BrowserRouter：应用在服务器处理动态请求的项目中 HasRouter：应">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-02T06:50:23.000Z">
-<meta property="article:modified_time" content="2020-12-02T06:59:11.224Z">
+<meta property="article:modified_time" content="2020-12-06T06:28:23.981Z">
 <meta property="article:author" content="lianzixin">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -180,6 +180,7 @@
 <p><strong>match</strong></p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//match对象表示当前的路由地址是怎么跳转过来的，包含的属性如下</span></span><br><span class="line">&#123;</span><br><span class="line">    isExact: <span class="literal">true</span>, <span class="comment">// 表示匹配到当前路径是否是完全匹配</span></span><br><span class="line">    params: &#123;&#125;, <span class="comment">// 表示路径的动态参数值</span></span><br><span class="line">    path: <span class="string">&#x27;/c&#x27;</span>, <span class="comment">// 匹配到的原始路径</span></span><br><span class="line">    url: <span class="string">&#x27;/c&#x27;</span> <span class="comment">// 匹配到的实际路径</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>作用：把不是通过路由切换过来的组件中，将react-router 的 history、location、match 三个对象传入props对象上</p>
 <p>当一个非路由组件想访问路由的 location、history 对象，使用 withRouter 进行包裹</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; withRouter &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router&#x27;</span></span><br><span class="line"><span class="keyword">const</span> MyComponent = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; match, location, history &#125; = <span class="built_in">this</span>.props</span><br><span class="line">     <span class="keyword">return</span> (</span><br><span class="line">        &lt;div&gt;&#123;props.location.pathname&#125;&lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> FirstTest = withRouter(MyComponent)</span><br></pre></td></tr></table></figure>
 
@@ -197,7 +198,7 @@
      
     <div class="post-footer__meta">
     <p>
-        updated at 2020-12-02
+        updated at 2020-12-06
     </p>
 </div> 
     <div class="post-meta__cats">

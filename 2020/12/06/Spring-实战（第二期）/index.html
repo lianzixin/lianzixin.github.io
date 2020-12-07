@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+
+
+    <!-- meta -->
+
+
+<title>Spring-实战（第二期） | lianzixin</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="展示信息在 Spring Web 应用程序中，获取和处理数据是控制器的工作。视图的工作是将数据渲染成 HTML 并显示在浏览器中。  创建抽象类在 Taco Cloud 应用程序中，包括 Taco 设计、组成这些设计的成分、客户和客户下的 Taco 订单等对象。首先关注配料——Ingredient 12345678910111213141516package tacos;​import lombo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring-实战（第二期）">
+<meta property="og:url" content="http://lianzixin.github.io/2020/12/06/Spring-%E5%AE%9E%E6%88%98%EF%BC%88%E7%AC%AC%E4%BA%8C%E6%9C%9F%EF%BC%89/index.html">
+<meta property="og:site_name" content="lianzixin">
+<meta property="og:description" content="展示信息在 Spring Web 应用程序中，获取和处理数据是控制器的工作。视图的工作是将数据渲染成 HTML 并显示在浏览器中。  创建抽象类在 Taco Cloud 应用程序中，包括 Taco 设计、组成这些设计的成分、客户和客户下的 Taco 订单等对象。首先关注配料——Ingredient 12345678910111213141516package tacos;​import lombo">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-06T03:26:28.000Z">
+<meta property="article:modified_time" content="2020-12-06T03:26:35.509Z">
+<meta property="article:author" content="lianzixin">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">lianzixin</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        Spring-实战（第二期）
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/12/" class="post-meta__date button">
+    2020-12-06
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/spring/" class="button">spring</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h1 id="展示信息"><a href="#展示信息" class="headerlink" title="展示信息"></a>展示信息</h1><p>在 Spring Web 应用程序中，获取和处理数据是控制器的工作。<br>视图的工作是将数据渲染成 HTML 并显示在浏览器中。</p>
+<p><img src="" alt="Spring MVC 请求流程"></p>
+<h2 id="创建抽象类"><a href="#创建抽象类" class="headerlink" title="创建抽象类"></a>创建抽象类</h2><p>在 Taco Cloud 应用程序中，包括 Taco 设计、组成这些设计的成分、客户和客户下的 Taco 订单等对象。首先关注配料——Ingredient</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> tacos;</span><br><span class="line">​</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.RequiredArgsConstructor;</span><br><span class="line">​</span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Ingredient</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String name;  <span class="comment">//名称</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Type type;    <span class="comment">//类型</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">enum</span> <span class="title">Type</span> </span>&#123;</span><br><span class="line">        WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码使用了 <code>@Data</code> 注解，将为类提供 Get、Set 等方法</p>
+<h2 id="创建控制器"><a href="#创建控制器" class="headerlink" title="创建控制器"></a>创建控制器</h2><p>控制器是 Spring MVC 的主要参与者，主要工作是处理 HTTP 请求，将请求传递给视图以呈现 HTML，或是直接将数据写入响应体（RESTful）<br>对于 Taco Cloud 应用程序，需要一个简单的控制器来执行以下操作：</p>
+<ul>
+<li>处理请求路径为 <code>/design</code> 的 HTTP GET 请求</li>
+<li>构建成分列表</li>
+<li>将请求和成分数据提交给视图模板，以 HTML 的形式呈现并发送给请求的 WEB 浏览器</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> tacos.web;</span><br><span class="line">​</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.stream.Collectors;</span><br><span class="line"><span class="keyword">import</span> javax.validation.Valid;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.validation.Errors;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PostMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line">​</span><br><span class="line"><span class="keyword">import</span> tacos.Taco;</span><br><span class="line"><span class="keyword">import</span> tacos.Ingredient;</span><br><span class="line"><span class="keyword">import</span> tacos.Ingredient.Type;</span><br><span class="line">​</span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/design&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DesignTacoController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">showDesignForm</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">        List&lt;Ingredient&gt; ingredients = Arrays.asList(</span><br><span class="line">            <span class="keyword">new</span> Ingredient(<span class="string">&quot;FLTO&quot;</span>, <span class="string">&quot;Flour Tortilla&quot;</span>, Type.WRAP),</span><br><span class="line">            <span class="keyword">new</span> Ingredient(<span class="string">&quot;COTO&quot;</span>, <span class="string">&quot;Corn Tortilla&quot;</span>, Type.WRAP),</span><br><span class="line">            <span class="keyword">new</span> Ingredient(<span class="string">&quot;GRBF&quot;</span>, <span class="string">&quot;Ground Beef&quot;</span>, Type.PROTEIN),</span><br><span class="line">            <span class="keyword">new</span> Ingredient(<span class="string">&quot;CARN&quot;</span>, <span class="string">&quot;Carnitas&quot;</span>, Type.PROTEIN),</span><br><span class="line">            <span class="keyword">new</span> Ingredient(<span class="string">&quot;TMTO&quot;</span>, <span class="string">&quot;Diced Tomatoes&quot;</span>, Type.VEGGIES),</span><br><span class="line">            <span class="keyword">new</span> Ingredient(<span class="string">&quot;LETC&quot;</span>, <span class="string">&quot;Lettuce&quot;</span>, Type.VEGGIES),</span><br><span class="line">            <span class="keyword">new</span> Ingredient(<span class="string">&quot;CHED&quot;</span>, <span class="string">&quot;Cheddar&quot;</span>, Type.CHEESE),</span><br><span class="line">            <span class="keyword">new</span> Ingredient(<span class="string">&quot;JACK&quot;</span>, <span class="string">&quot;Monterrey Jack&quot;</span>, Type.CHEESE),</span><br><span class="line">            <span class="keyword">new</span> Ingredient(<span class="string">&quot;SLSA&quot;</span>, <span class="string">&quot;Salsa&quot;</span>, Type.SAUCE),</span><br><span class="line">            <span class="keyword">new</span> Ingredient(<span class="string">&quot;SRCR&quot;</span>, <span class="string">&quot;Sour Cream&quot;</span>, Type.SAUCE)</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        Type[] types = Ingredient.Type.values();</span><br><span class="line">        <span class="keyword">for</span> (Type type : types) &#123;</span><br><span class="line">            model.addAttribute(type.toString().toLowerCase(),</span><br><span class="line">                filterByType(ingredients, type));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        model.addAttribute(<span class="string">&quot;design&quot;</span>, <span class="keyword">new</span> Taco());</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;design&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// provided by &#x27;aexiaosong&#x27;</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> List&lt;Ingredient&gt; <span class="title">filterByType</span><span class="params">(List&lt;Ingredient&gt; ingredients, Type type)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ingredients.stream().filter(x -&gt; x.getType().equals(type)).collect(Collectors.toList());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于 DesignTacoController，作用在类上的第一个注释为 <code>@Slf4j</code>，它是 <code>Lombok</code> 提供的注释，在运行时将自动生成类的 SLF4J 记录器，相当于显示地使用以下代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.slf4j.Logger log = </span><br><span class="line">       org.slf4j.LoggerFactory.getLogger(DesignTacoController.class);</span><br></pre></td></tr></table></figure>
+
+<p>下一个注释为 <code>@Controller</code>，将类标识为控制器并将其标记为组件扫描的候选对象，以便 <code>Spring</code> 将发现该类并在上下文自动创建实例作为 <code>bean</code></p>
+<p>最后一个注释为 <code>@RequestMapping</code>，指定该控制器处理的请求类型，在本例中，指定了控制器将处理路径为 <code>/design</code> 开头的请求。</p>
+<p><strong>处理 GET 请求</strong></p>
+<ul>
+<li>@RequestMapping： 通用请求处理</li>
+<li>@GetMapping：     处理 HTTP GET 请求</li>
+<li>@PostMapping：    处理 HTTP POST 请求</li>
+<li>@PutMapping：     处理 HTTP PUT 请求</li>
+<li>@DeleteMapping：  处理 HTTP DELETE 请求</li>
+<li>@PatchMapping：   处理 HTTP PATCH 请求</li>
+</ul>
+<blockquote>
+<p>通常，倾向于只在类级别上使用 @RequestMapping 来指定基本路径。在每个处理程序方法上使用更具体的 @GetMapping、@PostMapping 等。</p>
+</blockquote>
+<h1 id="验证输入"><a href="#验证输入" class="headerlink" title="验证输入"></a>验证输入</h1><p><code>Spring</code> 支持 <code>Java&#39;s Bean Validation API</code>（也称为 JSR-303；<a target="_blank" rel="noopener" href="https://jcp.org/en/jsr/detail?id=303%EF%BC%89%E3%80%82%E8%BF%99%E4%BD%BF%E5%BE%97%E5%A3%B0%E6%98%8E%E9%AA%8C%E8%AF%81%E8%A7%84%E5%88%99%E6%AF%94%E5%9C%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81%E4%B8%AD%E6%98%BE%E5%BC%8F%E5%9C%B0%E7%BC%96%E5%86%99%E5%A3%B0%E6%98%8E%E9%80%BB%E8%BE%91%E6%9B%B4%E5%AE%B9%E6%98%93%E3%80%82">https://jcp.org/en/jsr/detail?id=303）。这使得声明验证规则比在应用程序代码中显式地编写声明逻辑更容易。</a><br>使用 Spring Boot，不需要做任何特殊的事情来将验证库添加到项目中，因为 Validation API 和 Validation API 的 Hibernate 实现作为Spring Boot web 启动程序的临时依赖项自动添加到了项目中。</p>
+<h2 id="声明验证规则"><a href="#声明验证规则" class="headerlink" title="声明验证规则"></a>声明验证规则</h2><p>使用对应注解（位于 <code>javax.validation.constraints</code> 下）</p>
+<ul>
+<li>@NutNull：不为 null</li>
+<li>@NotBlank：不为空白字段</li>
+<li>@Digits：指定包含数字位数</li>
+<li>@Pattern：自定义匹配模式</li>
+<li>@Size：指定内容大小</li>
+</ul>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><ul>
+<li>Spring 提供了一个强大的 web 框架，称为 Spring MVC，可以用于开发 Spring 应用程序的 web 前端。</li>
+<li>Spring MVC 是基于注解的，可以使用 @RequestMapping、@GetMapping 和 @PostMapping 等注解来声明请求处理方法。</li>
+<li>大多数请求处理方法通过返回视图的逻辑名称来结束，例如一个 Thymeleaf 模板，请求（以及任何模型数据）被转发到该模板。</li>
+<li>Spring MVC 通过 Java Bean Validation API 和 Hibernate Validator 等验证 API 的实现来支持验证。</li>
+</ul>
+
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-12-06
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+        <a href="/categories/spring/" class="post-cats__link button">spring</a>
+    
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/12/04/spring-JPA/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            spring-JPA 接口规范
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2020&nbsp;-&nbsp;2020 <a href="/">lianzixin</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
