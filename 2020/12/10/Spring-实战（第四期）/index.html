@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+
+
+    <!-- meta -->
+
+
+<title>Spring-实战（第四期） | lianzixin</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="启用 Spring Security添加对应依赖： 1234&lt;dependency&gt;    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;spring-boot-starter-security&lt;&#x2F;artifactId&gt;&lt;&#x2F;dependency&gt;  启动应">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring-实战（第四期）">
+<meta property="og:url" content="http://lianzixin.github.io/2020/12/10/Spring-%E5%AE%9E%E6%88%98%EF%BC%88%E7%AC%AC%E5%9B%9B%E6%9C%9F%EF%BC%89/index.html">
+<meta property="og:site_name" content="lianzixin">
+<meta property="og:description" content="启用 Spring Security添加对应依赖： 1234&lt;dependency&gt;    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;spring-boot-starter-security&lt;&#x2F;artifactId&gt;&lt;&#x2F;dependency&gt;  启动应">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-10T03:34:43.000Z">
+<meta property="article:modified_time" content="2020-12-13T03:25:21.651Z">
+<meta property="article:author" content="lianzixin">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">lianzixin</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        Spring-实战（第四期）
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/12/" class="post-meta__date button">
+    2020-12-10
+</a>
+        
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h1 id="启用-Spring-Security"><a href="#启用-Spring-Security" class="headerlink" title="启用 Spring Security"></a>启用 Spring Security</h1><p>添加对应依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>启动应用程序并访问主页（或任何页面）。将提示使用 HTTP 基本身份验证对话框进行身份验证。要想通过认证，需要提供用户名和密码。用户名是 user。至于密码，它是随机生成并写入了应用程序日志文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Using default security password: 087cfc6a-027d-44bc-95d7-cbb3a798a1ea</span><br></pre></td></tr></table></figure>
+
+<p>只需要在项目构建中添加 security starter，就可以获得以下安全特性：</p>
+<ul>
+<li>所有的 HTTP 请求路径都需要认证。</li>
+<li>不需要特定的角色或权限。</li>
+<li>没有登录页面。</li>
+<li>身份验证由 HTTP 基本身份验证提供。</li>
+<li>只有一个用户；用户名是 user。</li>
+</ul>
+<h1 id="配置-Spring-Security"><a href="#配置-Spring-Security" class="headerlink" title="配置 Spring Security"></a>配置 Spring Security</h1><p>开启登陆表单</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> tacos.security;</span><br><span class="line">​</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;</span><br><span class="line"><span class="keyword">import</span> org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;</span><br><span class="line">​</span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecurityConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="内存用户存储"><a href="#内存用户存储" class="headerlink" title="内存用户存储"></a>内存用户存储</h2><p>在上类添加以下方法，对 inMemoryAuthentication() 方法的调用，可以直接在安全配置本身中指定用户信息。<br>对 withUser() 的每个调用都会启动用户的配置。给 withUser() 的值是用户名，而密码和授予的权限是用 password() 和 authority() 方法指定的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    auth</span><br><span class="line">        .inMemoryAuthentication()</span><br><span class="line">            .withUser(<span class="string">&quot;buzz&quot;</span>)</span><br><span class="line">                .password(<span class="string">&quot;infinity&quot;</span>)</span><br><span class="line">                .authorities(<span class="string">&quot;ROLE_USER&quot;</span>)</span><br><span class="line">            .and()</span><br><span class="line">            .withUser(<span class="string">&quot;woody&quot;</span>)</span><br><span class="line">                .password(<span class="string">&quot;bullseye&quot;</span>)</span><br><span class="line">                .authorities(<span class="string">&quot;ROLE_USER&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="基于-JDBC-的用户存储"><a href="#基于-JDBC-的用户存储" class="headerlink" title="基于 JDBC 的用户存储"></a>基于 JDBC 的用户存储</h2><p><code>configure()</code> 的这个实现在给定的 <code>AuthenticationManagerBuilder</code> 上调用 <code>jdbcAuthentication()</code>。然后，必须设置 <code>DataSource</code>，以便它知道如何访问数据库。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">DataSource dataSource;</span><br><span class="line">​</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    auth</span><br><span class="line">        .jdbcAuthentication()</span><br><span class="line">        .dataSource(dataSource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>重写默认用户查询</strong><br>配置自己的查询。重写了身份验证和基本授权查询，也可以通过使用自定义查询调用 groupAuthoritiesByUsername() 来重写组权限查询。</p>
+<p>在将默认 SQL 查询替换为自己设计的查询时，一定要遵守查询的基本约定。<br>它们都以用户名作为唯一参数。<br>身份验证查询选择用户名、密码和启用状态；授权查询选择包含用户名和授予的权限的零个或多个行的数据；组权限查询选择零个或多个行数据，每个行有一个 group id、一个组名和一个权限。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    auth</span><br><span class="line">        .jdbcAuthentication()</span><br><span class="line">            .dataSource(dataSource)</span><br><span class="line">            .usersByUsernameQuery(</span><br><span class="line">                <span class="string">&quot;select username, password, enabled from Users &quot;</span> +</span><br><span class="line">                <span class="string">&quot;where username=?&quot;</span>)</span><br><span class="line">            .authoritiesByUsernameQuery(</span><br><span class="line">                <span class="string">&quot;select username, authority from UserAuthorities &quot;</span> +</span><br><span class="line">                <span class="string">&quot;where username=?&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用编码密码</strong><br>在数据库中对密码进行编码，身份验证将失败，因为它与用户提交的明文密码不匹配。<br>为了解决这个问题，你需要通过调用 passwordEncoder() 方法指定一个密码编码器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    auth</span><br><span class="line">        .jdbcAuthentication()</span><br><span class="line">            .dataSource(dataSource)</span><br><span class="line">            .usersByUsernameQuery(</span><br><span class="line">                <span class="string">&quot;select username, password, enabled from Users &quot;</span> +</span><br><span class="line">                <span class="string">&quot;where username=?&quot;</span>)</span><br><span class="line">            .authoritiesByUsernameQuery(</span><br><span class="line">                <span class="string">&quot;select username, authority from UserAuthorities &quot;</span> +</span><br><span class="line">                <span class="string">&quot;where username=?&quot;</span>)</span><br><span class="line">            .passwordEncoder(<span class="keyword">new</span> StandardPasswordEncoder(<span class="string">&quot;53cr3t&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>passwordEncoder() 方法接受 <code>Spring Security</code> 的 <code>passwordEncoder</code> 接口的任何实现。<code>Spring Security</code> 的加密模块包括几个这样的实现：</p>
+<ul>
+<li><code>BCryptPasswordEncoder</code> —— 采用 bcrypt 强哈希加密</li>
+<li><code>NoOpPasswordEncoder</code> —— 不应用任何编码</li>
+<li><code>Pbkdf2PasswordEncoder</code> —— 应用 PBKDF2 加密</li>
+<li><code>SCryptPasswordEncoder</code> —— 应用了 scrypt 散列加密</li>
+<li><code>StandardPasswordEncoder</code> —— 应用 SHA-256 散列加密</li>
+</ul>
+<p>如果没有现成的实现满足你的需求，你可以选择任何其他实现，甚至可以提供你自己的自定义实现。继承 <code>PasswordEncoder</code> 接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PasswordEncoder</span> </span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">encode</span><span class="params">(CharSequence rawPassword)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">matches</span><span class="params">(CharSequence rawPassword, String encodedPassword)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义用户身份验证"><a href="#自定义用户身份验证" class="headerlink" title="自定义用户身份验证"></a>自定义用户身份验证</h2><p>传递自定义的接口，从而实现自定义用户身份认证</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> UserDetailsService userDetailsService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> PasswordEncoder <span class="title">encoder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> StandardPasswordEncoder(<span class="string">&quot;53cr3t&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    auth</span><br><span class="line">        .userDetailsService(userDetailsService)</span><br><span class="line">        .passwordEncoder(encoder());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="保护-Web-请求"><a href="#保护-Web-请求" class="headerlink" title="保护 Web 请求"></a>保护 Web 请求</h1><p>Taco Cloud 的安全需求应该要求用户在设计 tacos 或下订单之前进行身份验证。但是主页、登录页面和注册页面应该对未经身份验证的用户可用。</p>
+<p>要配置这些安全规则，需要介绍一下 WebSecurityConfigurerAdapter 的另一个 configure() 方法<br>这个 configure() 方法接受 HttpSecurity 对象，可以使用该对象来配置如何在 web 级别处理安全性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="保护请求"><a href="#保护请求" class="headerlink" title="保护请求"></a>保护请求</h2><p>需要确保 /design 和 /orders 的请求仅对经过身份验证的用户可用；应该允许所有用户发出所有其他请求。下面的 configure() 实现就是这样做的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    http</span><br><span class="line">        .authorizeRequests()</span><br><span class="line">            .antMatchers(<span class="string">&quot;/design&quot;</span>, <span class="string">&quot;/orders&quot;</span>)</span><br><span class="line">                .hasRole(<span class="string">&quot;ROLE_USER&quot;</span>)</span><br><span class="line">            .antMatchers(<span class="string">&quot;/&quot;</span>, <span class="string">&quot;/**&quot;</span>).permitAll();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对 authorizeRequests() 的调用返回一个对象（ExpressionInterceptUrlRegistry），可以在该对象上指定 URL 路径和模式以及这些路径的安全需求。在这种情况下，指定两个安全规则：</p>
+<ul>
+<li>对于 /design 和 /orders 的请求应该是授予 ROLE_USER 权限的用户的请求。</li>
+<li>所有的请求都应该被允许给所有的用户。</li>
+</ul>
+<h2 id="创建用户登录页面"><a href="#创建用户登录页面" class="headerlink" title="创建用户登录页面"></a>创建用户登录页面</h2><p>要替换内置的登录页面，首先需要告诉 Spring Security 自定义登录页面的路径。这可以通过调用传递给 configure() 的 HttpSecurity 对象上的 formLogin() 来实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    http</span><br><span class="line">        .authorizeRequests()</span><br><span class="line">            .antMatchers(<span class="string">&quot;/design&quot;</span>, <span class="string">&quot;/orders&quot;</span>)</span><br><span class="line">                .access(<span class="string">&quot;hasRole(&#x27;ROLE_USER&#x27;)&quot;</span>)</span><br><span class="line">            .antMatchers(“/”, <span class="string">&quot;/**&quot;</span>).access(<span class="string">&quot;permitAll&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        .and()</span><br><span class="line">            .formLogin()</span><br><span class="line">                .loginPage(<span class="string">&quot;/login&quot;</span>)</span><br><span class="line">                .defaultSuccessUrl(<span class="string">&quot;/design&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在需要提供一个控制器来处理该路径上的请求。因为你的登录页面非常简单 —— 除了一个视图什么都没有 —— 在 WebConfig 中声明它为一个视图控制器是很容易的。下面的 addViewControllers() 方法在将 “/” 映射到主控制器的视图控制器旁边设置登录页面视图控制器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addViewControllers</span><span class="params">(ViewControllerRegistry registry)</span> </span>&#123;</span><br><span class="line">    registry.addViewController(<span class="string">&quot;/&quot;</span>).setViewName(<span class="string">&quot;home&quot;</span>);</span><br><span class="line">    registry.addViewController(<span class="string">&quot;/login&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="登出"><a href="#登出" class="headerlink" title="登出"></a>登出</h2><p>与登录应用程序同样重要的是登出。要启用登出功能，只需调用 HttpSecurity 对象上的 logout</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.and()</span><br><span class="line">    .logout()</span><br><span class="line">        .logoutSuccessUrl(<span class="string">&quot;/&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="阻止跨站请求伪造"><a href="#阻止跨站请求伪造" class="headerlink" title="阻止跨站请求伪造"></a>阻止跨站请求伪造</h2><p>Spring Security 有内置的 CSRF 保护。更幸运的是，它是默认启用的，不需要显式地配置它。只需确保应用程序提交的任何表单都包含一个名为 _csrf 的字段，该字段包含 CSRF token。<br>Spring Security 甚至可以通过将 CSRF token 放在名为 _csrf 的请求属性中来简化这一过程。因此，可以使用以下代码，在 Thymeleaf 模板的一个隐藏字段中呈现 CSRF token</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;_csrf&quot;</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;_csrf.token&#125;&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果使用 Spring MVC 的 JSP 标签库或带有 Spring 安全方言的 Thymeleaf，那么甚至不需要显式地包含一个隐藏字段，隐藏字段将自动呈现。</p>
+<h1 id="获取用户"><a href="#获取用户" class="headerlink" title="获取用户"></a>获取用户</h1><p>有几种方法可以确定用户是谁。以下是一些最常见的方法：</p>
+<ul>
+<li>将主体对象注入控制器方法</li>
+<li>将身份验证对象注入控制器方法</li>
+<li>使用 SecurityContext 获取安全上下文</li>
+<li>使用 @AuthenticationPrincipal 注解的方法</li>
+</ul>
+<p>可以修改 processOrder() 来接受 java.security.Principal 作为参数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">processOrder</span><span class="params">(<span class="meta">@Valid</span> Order order, Errors errors,</span></span></span><br><span class="line"><span class="function"><span class="params">                           SessionStatus sessionStatus,</span></span></span><br><span class="line"><span class="function"><span class="params">                           Principal principal)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">    User user = userRepository.findByUsername(principal.getName());</span><br><span class="line">    order.setUser(user);</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接受 Authentication 对象作为参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">processOrder</span><span class="params">(<span class="meta">@Valid</span> Order order, Errors errors,</span></span></span><br><span class="line"><span class="function"><span class="params">                           SessionStatus sessionStatus,</span></span></span><br><span class="line"><span class="function"><span class="params">                           Authentication authentication)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">        </span><br><span class="line">    User user = (User) authentication.getPrincipal();</span><br><span class="line">    order.setUser(user);</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也许最干净的解决方案是简单地接受 processOrder() 中的用户对象，但是使用 @AuthenticationPrincipal 对其进行注解，以便它成为身份验证的主体</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">processOrder</span><span class="params">(<span class="meta">@Valid</span> Order order, Errors errors,</span></span></span><br><span class="line"><span class="function"><span class="params">                           SessionStatus sessionStatus,</span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="meta">@AuthenticationPrincipal</span> User user)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (errors.hasErrors()) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;orderForm&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    order.setUser(user);</span><br><span class="line">    </span><br><span class="line">    orderRepo.save(order);</span><br><span class="line">    sessionStatus.setComplete();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><ul>
+<li>Spring Security 自动配置是一种很好的开始学习安全的方式，但大多数应用程序需要明确地配置安全，以满足其独特的安全需求。</li>
+<li>用户细节可以在关系数据库、LDAP 或完全自定义实现支持的用户存储中进行管理。</li>
+<li>Spring Security 自动防御 CSRF 攻击。</li>
+<li>通过 SecurityContext 对象（从 SecurityContextHolder. getcontext() 中返回）或使用 @AuthenticationPrincipal 注入控制器中，可以获得认证用户的信息。</li>
+</ul>
+
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-12-13
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/12/09/Spring-%E5%AE%9E%E6%88%98%EF%BC%88%E7%AC%AC%E4%B8%89%E6%9C%9F%EF%BC%89/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            Spring-实战（第三期）
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2020&nbsp;-&nbsp;2020 <a href="/">lianzixin</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
