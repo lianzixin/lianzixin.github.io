@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+
+
+    <!-- meta -->
+
+
+<title>Spring-实战（第五期） | lianzixin</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="配置属性微调自动配置 Bean Wiring：声明组件作为 bean 创建 Property injection：在应用程序上下文设置 bean 的值  Spring 环境来自几个属性源，包括：  JVM 系统属性 操作系统环境变量 命令行参数 应用程序属性配置文件（properties、yml）  通过 Spring Boot 自动配置的 bean 都可以通过从 Spring 环境中提取的属性进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring-实战（第五期）">
+<meta property="og:url" content="http://lianzixin.github.io/2020/12/15/Spring-%E5%AE%9E%E6%88%98%EF%BC%88%E7%AC%AC%E4%BA%94%E6%9C%9F%EF%BC%89/index.html">
+<meta property="og:site_name" content="lianzixin">
+<meta property="og:description" content="配置属性微调自动配置 Bean Wiring：声明组件作为 bean 创建 Property injection：在应用程序上下文设置 bean 的值  Spring 环境来自几个属性源，包括：  JVM 系统属性 操作系统环境变量 命令行参数 应用程序属性配置文件（properties、yml）  通过 Spring Boot 自动配置的 bean 都可以通过从 Spring 环境中提取的属性进">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-15T03:54:25.000Z">
+<meta property="article:modified_time" content="2020-12-15T03:54:29.267Z">
+<meta property="article:author" content="lianzixin">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">lianzixin</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        Spring-实战（第五期）
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/12/" class="post-meta__date button">
+    2020-12-15
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/spring/" class="button">spring</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h1 id="配置属性"><a href="#配置属性" class="headerlink" title="配置属性"></a>配置属性</h1><h2 id="微调自动配置"><a href="#微调自动配置" class="headerlink" title="微调自动配置"></a>微调自动配置</h2><ul>
+<li>Bean Wiring：声明组件作为 bean 创建</li>
+<li>Property injection：在应用程序上下文设置 bean 的值</li>
+</ul>
+<p>Spring 环境来自几个属性源，包括：</p>
+<ul>
+<li>JVM 系统属性</li>
+<li>操作系统环境变量</li>
+<li>命令行参数</li>
+<li>应用程序属性配置文件（properties、yml）</li>
+</ul>
+<p>通过 Spring Boot 自动配置的 bean 都可以通过从 Spring 环境中提取的属性进行配置。<br>例如指定应用程序的端口，将 server.port 设置为 0，服务器将随机选择可用端口<br><strong>通过 properties 文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server.port&#x3D;9090</span><br></pre></td></tr></table></figure>
+<p><strong>通过 yml 文件</strong></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">9090</span></span><br></pre></td></tr></table></figure>
+<p><strong>通过命令行</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ java -jar tacocloud-0.0.5-SNAPSHOT.jar --server.port&#x3D;9090</span><br></pre></td></tr></table></figure>
+<p><strong>通过操作系统</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ export SERVER_PORT&#x3D;9090</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置数据源"><a href="#配置数据源" class="headerlink" title="配置数据源"></a>配置数据源</h3><p>通过配置文件配置数据库，而不需要通过显示配置 DataSource bean</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost/tacocloud</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">tacodb</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">tacopassword</span></span><br></pre></td></tr></table></figure>
+
+<p>通过配置文件执行对应的 sql 文件，而不用通过显示使用 JDBC 驱动</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">schema:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">order-schema.sql</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">ingredient-schema.sql</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">tao-schema.sql</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">user-schema.sql</span></span><br><span class="line">    <span class="attr">data:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">ingredients.sql</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置日志"><a href="#配置日志" class="headerlink" title="配置日志"></a>配置日志</h3><p>默认情况，Spring Boot 通过 logback 配置日志，完全控制日志配置，可以在类路径的根目录创建 log.xml，位于 /src/main/resources</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;STDOUT&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.ConsoleAppender&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">encoder</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span></span><br><span class="line">                %d&#123;HH:mm:ss.SSS&#125; [%thread] %-5level %logger&#123;36&#125; - %msg%n</span><br><span class="line">            <span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">logger</span> <span class="attr">name</span>=<span class="string">&quot;root&quot;</span> <span class="attr">level</span>=<span class="string">&quot;INFO&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">root</span> <span class="attr">level</span>=<span class="string">&quot;INFO&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;STDOUT&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>设置日志记录级别，可以通过配置属性，通过 level 指定级别，使用 path、file 实现日志写入具体文件<br>默认情况下，日志文件在大小达到 10 MB 时就会进行循环写入。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">logging:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">/var/logs/</span></span><br><span class="line">  <span class="attr">file:</span> <span class="string">TacoClous.log</span></span><br><span class="line">  <span class="attr">level:</span></span><br><span class="line">    <span class="attr">root:</span> <span class="string">WARN</span></span><br><span class="line">    <span class="attr">org:</span></span><br><span class="line">      <span class="attr">springframework:</span></span><br><span class="line">        <span class="attr">security:</span> <span class="string">DEBUG</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="使用特殊的属性值"><a href="#使用特殊的属性值" class="headerlink" title="使用特殊的属性值"></a>使用特殊的属性值</h3><p>设置自定义属性，对于引用其他属性，可使用 ${} 进行标记</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">greeting:</span></span><br><span class="line">  <span class="attr">welcome:</span> <span class="string">$&#123;spring.application.name&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="创建自己的配置属性"><a href="#创建自己的配置属性" class="headerlink" title="创建自己的配置属性"></a>创建自己的配置属性</h2><p>接下来介绍如何指定 bean 使用上面配置的属性<br>为了支持配置属性注入，Spring Boot 提供了 @ConfigurationProperties 注解<br>配置文件如下，自定义了 pageSize 属性</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">taco:</span></span><br><span class="line">  <span class="attr">orders:</span></span><br><span class="line">    <span class="attr">pageSize:</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<p>使用对应注解，prefix 指定前缀名</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConfigurationProperties(prefix=&quot;taco.orders&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderController</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> pageSize = <span class="number">20</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="声明配置属性元数据"><a href="#声明配置属性元数据" class="headerlink" title="声明配置属性元数据"></a>声明配置属性元数据</h3><p>对于自定义配置属性，IDE 将生成警告，此时需要对属性进行元数据说明，即可消除<br>要为自定义配置属性创建元数据，需要在 META-INF（例如，在项目下的 src/main/resources/META-INF 中）中创建一个名为 addition-spring-configuration-metadata.json 的文件。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;properties&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;taco.orders.page-size&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;java.lang.String&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;description&quot;</span>:<span class="string">&quot;Sets the maximum number of orders to display in a list.&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-profile-文件进行配置"><a href="#使用-profile-文件进行配置" class="headerlink" title="使用 profile 文件进行配置"></a>使用 profile 文件进行配置</h2><p>布置到不同环境需要用到不同的环境变量，此时可以使用 profile 文件进行指定。<br>对于默认的 application.yml 文件，此配置文件全局生效，配置如下</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">logging:</span></span><br><span class="line">  <span class="attr">level:</span></span><br><span class="line">    <span class="attr">tacos:</span> <span class="string">DEBUG</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="定义特定的-profile-属性"><a href="#定义特定的-profile-属性" class="headerlink" title="定义特定的 profile 属性"></a>定义特定的 profile 属性</h3><p>定义特定 profile 文件的属性的一种方法是创建另一个仅包含用于生产的属性的 YAML 或属性文件。<br>文件的名称应该遵循这个约定：application-{profile 名称}.yml 或 application-{profile 名称}.properties。然后可以指定适合该配置文件的配置属性。<br>例如，可以创建一个名为 application-prod.yml 的新文件，包含以下属性：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost/tacocloud</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">tacouser</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">tacopassword</span></span><br><span class="line"><span class="attr">logging:</span></span><br><span class="line">  <span class="attr">level:</span></span><br><span class="line">    <span class="attr">tacos:</span> <span class="string">WARN</span></span><br></pre></td></tr></table></figure>
+
+<p>另外一种方式，使用三个破折号，指定环境属性，则整个 yml 文件将是如下样子。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">logging:</span></span><br><span class="line">  <span class="attr">level:</span></span><br><span class="line">    <span class="attr">tacos:</span> <span class="string">DEBUG</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span> <span class="string">prod</span></span><br><span class="line">  </span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost/tacocloud</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">tacouser</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">tacopassword</span></span><br><span class="line"><span class="string">​</span></span><br><span class="line"><span class="attr">logging:</span></span><br><span class="line">  <span class="attr">level:</span></span><br><span class="line">    <span class="attr">tacos:</span> <span class="string">WARN</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="激活-profile-文件"><a href="#激活-profile-文件" class="headerlink" title="激活 profile 文件"></a>激活 profile 文件</h3><p>让一个 profile 文件处于激活状态需要做的只是将 spring.profiles.active 属性的值指定为需要激活的 profile 的名称。此时就是定义的 yml 文件与默认文件的合并，优先级：激活文件更高</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">prod</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">audit</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">ha</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="有条件地使用-profile-文件创建-bean"><a href="#有条件地使用-profile-文件创建-bean" class="headerlink" title="有条件地使用 profile 文件创建 bean"></a>有条件地使用 profile 文件创建 bean</h3><p>只有在某个配置文件处于活动状态时才需要创建一些 bean，在这种情况下，@Profile 注解可以将 bean 指定为只适用于给定的 profile 文件。<br>例如，只在开发环境生成 dataLoader</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//肯定用法</span></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@Profile(&quot;dev&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> CommandLineRunner <span class="title">dataLoader</span><span class="params">(IngredientRepository repo,</span></span></span><br><span class="line"><span class="function"><span class="params">     UserRepository userRepo, PasswordEncoder encoder)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//否定用法</span></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@Profile(&quot;!prod&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> CommandLineRunner <span class="title">dataLoader</span><span class="params">(IngredientRepository repo, </span></span></span><br><span class="line"><span class="function"><span class="params">      UserRepository userRepo, PasswordEncoder encoder)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-12-15
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+        <a href="/categories/spring/" class="post-cats__link button">spring</a>
+    
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/2020/12/21/%E8%A7%A3%E5%86%B3-java-%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E5%8C%85%EF%BC%8C%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            解决 java 发送请求包，中文乱码的问题
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/12/10/Spring-%E5%AE%9E%E6%88%98%EF%BC%88%E7%AC%AC%E5%9B%9B%E6%9C%9F%EF%BC%89/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            Spring-实战（第四期）
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2020&nbsp;-&nbsp;2020 <a href="/">lianzixin</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
