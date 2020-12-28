@@ -37,7 +37,7 @@
 <meta property="og:description" content="关于二叉树的解题模板刷了那么多二叉树的题目，逐渐地领会到有一些规律在二叉树中，有些时候，需要改动的只是少部分，基本上就是照搬模板就行了。有了模板，需要关注的点就是解题细节，而不是关注解题框架。 关于树节点的定义约定一下二叉树节点的类定义 1234567891011struct TreeNode &amp;#123;  &#x2F;&#x2F;节点值  int val;  &#x2F;&#x2F;左子树  TreeNode *left;  &#x2F;&#x2F;右">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-24T04:01:15.000Z">
-<meta property="article:modified_time" content="2020-12-13T06:19:07.140Z">
+<meta property="article:modified_time" content="2020-12-28T09:49:19.610Z">
 <meta property="article:author" content="lianzixin">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -201,16 +201,29 @@
 <p>前序遍历可归结为：</p>
 <ol>
 <li>输出根节点</li>
-<li>查看根节点是否有左节点，有则进入第一步</li>
-<li>查看根节点是否有右节点，进行入栈（使用栈的原因是保证当前取出的节点是最近的右节点，然后重新回到第一步）</li>
+<li>查看根节点是否有左节点，有则设置为左节点，并进入第一步</li>
+<li>查看根节点是否有右节点，有则进行入栈（使用栈的原因是保证当前取出的节点是最近的右节点，然后重新回到第一步）</li>
 </ol>
 <p>通过上面的总结，可简单使用栈和单指针完成遍历操作</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!root) <span class="keyword">return</span> res;</span><br><span class="line">  <span class="built_in">stack</span>&lt;TreeNode*&gt; ts;</span><br><span class="line">  TreeNode* current = root;</span><br><span class="line">  <span class="keyword">while</span>(current || ts.size())&#123;</span><br><span class="line">    <span class="comment">//为空，则取出最近的右节点</span></span><br><span class="line">    <span class="keyword">if</span>(!current) &#123;current = ts.top();ts.pop();&#125;</span><br><span class="line">    <span class="comment">//右节点入栈</span></span><br><span class="line">    <span class="keyword">if</span>(current-&gt;right) ts.push(current-&gt;right);</span><br><span class="line">    <span class="comment">/*对值进行处理*/</span></span><br><span class="line">    res.push_back(current-&gt;val);</span><br><span class="line">    <span class="comment">//进入左节点</span></span><br><span class="line">    current = current-&gt;left;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>后序遍历二叉树</strong><br>对于迭代式遍历，需要的元素如下：</p>
+<ul>
+<li>栈：记录左右节点</li>
+<li>preview：上一个访问的节点</li>
+</ul>
+<p>后序遍历可归结为：<br>当前节点为空，设置为栈顶节点</p>
+<ol>
+<li>左节点不为空，且上次访问不为子节点，压栈左移</li>
+<li>右节点不为空，且上次访问不为右节点，压栈右移</li>
+<li>设置访问节点，设置当前节点为空</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">postorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">stack</span>&lt;TreeNode*&gt; st;</span><br><span class="line">        TreeNode* preview;</span><br><span class="line">        <span class="keyword">while</span>(root || st.size())&#123;</span><br><span class="line">            <span class="comment">//是否需要获取栈内节点</span></span><br><span class="line">            <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                root = st.top();</span><br><span class="line">                st.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//遍历左节点</span></span><br><span class="line">            <span class="keyword">if</span>(root-&gt;left &amp;&amp; preview != root-&gt;left &amp;&amp; preview != root-&gt;right)&#123;</span><br><span class="line">                st.push(root);</span><br><span class="line">                root = root-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//遍历右节点</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(root-&gt;right &amp;&amp; preview != root-&gt;right)&#123;</span><br><span class="line">                st.push(root);</span><br><span class="line">                root = root-&gt;right;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//根节点</span></span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                res.push_back(root-&gt;val);</span><br><span class="line">                preview = root;</span><br><span class="line">                root = <span class="literal">nullptr</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
     </div>
      
     <div class="post-footer__meta">
     <p>
-        updated at 2020-12-13
+        updated at 2020-12-28
     </p>
 </div> 
     <div class="post-meta__cats">
