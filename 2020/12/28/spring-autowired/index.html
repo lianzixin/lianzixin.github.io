@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+
+
+    <!-- meta -->
+
+
+<title>Spring 的 @Autowired 注解 | lianzixin</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="概述@Autowired：允许将 Spring 解析的 bean 并将其注入到其他 bean 中。 前提背景Spring 框架启用自动依赖项注入。通过 Spring 配置文件中声明的所有 bean 依赖关系，Spring 容器可以自动关联协作 bean 之间的关系。称为 Spring bean 自动装配 对于 @SpringBootApplication ，等效采用 @Configuration，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring 的 @Autowired 注解">
+<meta property="og:url" content="http://lianzixin.github.io/2020/12/28/spring-autowired/index.html">
+<meta property="og:site_name" content="lianzixin">
+<meta property="og:description" content="概述@Autowired：允许将 Spring 解析的 bean 并将其注入到其他 bean 中。 前提背景Spring 框架启用自动依赖项注入。通过 Spring 配置文件中声明的所有 bean 依赖关系，Spring 容器可以自动关联协作 bean 之间的关系。称为 Spring bean 自动装配 对于 @SpringBootApplication ，等效采用 @Configuration，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-28T10:34:23.000Z">
+<meta property="article:modified_time" content="2020-12-28T11:34:36.570Z">
+<meta property="article:author" content="lianzixin">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">lianzixin</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        Spring 的 @Autowired 注解
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/12/" class="post-meta__date button">
+    2020-12-28
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/spring/" class="button">spring</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><code>@Autowired</code>：允许将 Spring 解析的 bean 并将其注入到其他 bean 中。</p>
+<h1 id="前提背景"><a href="#前提背景" class="headerlink" title="前提背景"></a>前提背景</h1><p>Spring 框架启用自动依赖项注入。<br>通过 Spring 配置文件中声明的所有 bean 依赖关系，Spring 容器可以自动关联协作 bean 之间的关系。称为 Spring bean 自动装配</p>
+<p>对于 <code>@SpringBootApplication</code> ，等效采用 <code>@Configuration</code>，<code>@EnableAutoConfiguration</code> 和 <code>@ComponentScan</code>。</p>
+<p>当运行 SPring Boot 应用程序时，将自动扫描当前包及其子包中的组件。将组件注册到 Spring 的 Application Context 中，并允许我们使用 <code>@Autowired</code> 注入。</p>
+<h1 id="使用-Autowired"><a href="#使用-Autowired" class="headerlink" title="使用 @Autowired"></a>使用 @Autowired</h1><p>启用注解注入，我们可以对<code>属性</code>、<code>设置器</code>、<code>构造器</code>使用自动装配</p>
+<p><strong>属性上使用</strong><br>定义一个 bean， 使用 <code>@Component</code> 注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component(&quot;fooFormatter&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FooFormatter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">format</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;foo&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用注解注入到属性中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FooService</span> </span>&#123;  </span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> FooFormatter fooFormatter;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>设置器上使用</strong><br>声明 setter 方法，使用该注解，即可自动装配</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FooService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> FooFormatter fooFormatter;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFooFormatter</span><span class="params">(FooFormatter fooFormatter)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.fooFormatter = fooFormatter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>构造器上使用</strong><br>声明构造器，使用注解也可自动装配</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FooService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> FooFormatter fooFormatter;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FooService</span><span class="params">(FooFormatter fooFormatter)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.fooFormatter = fooFormatter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="可选依赖注入"><a href="#可选依赖注入" class="headerlink" title="可选依赖注入"></a>可选依赖注入</h1><p>对于使用 Autowired 注解，在类初始化前必须能够识别 bean，如果在类初始化前，spring 未找到需要装填的 bean，则会报错<br>此时可使用 required 属性设置不强制依赖</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FooService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired(required = false)</span></span><br><span class="line">    <span class="keyword">private</span> FooDAO dataAccessor; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="对于带有歧义的-Autowired"><a href="#对于带有歧义的-Autowired" class="headerlink" title="对于带有歧义的 Autowired"></a>对于带有歧义的 Autowired</h1><p>有时候，由于命名问题，Autowired 会找到多个 bean，此时就会出现歧义的问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component(&quot;fooFormatter&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FooFormatter</span> <span class="keyword">implements</span> <span class="title">Formatter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">format</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;foo&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Component(&quot;barFormatter&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BarFormatter</span> <span class="keyword">implements</span> <span class="title">Formatter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">format</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;bar&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时使用注入，将会直接报错</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FooService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> Formatter formatter;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解决方案：使用 @Qualifier 进行 bean 的定向使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FooService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier(&quot;fooFormatter&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Formatter formatter;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Spring-按照名称进行装填"><a href="#Spring-按照名称进行装填" class="headerlink" title="Spring 按照名称进行装填"></a>Spring 按照名称进行装填</h1><p>Spring 使用 Bean 的名称作为默认的限定符值。它将检查容器并查找具有确切名称作为自动装配属性的 Bean。<br>对于下列 Spring 寻找 fooFormatter -&gt; FooFormatter 进行装填</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FooService</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Autowired</span> </span><br><span class="line">  <span class="keyword">private</span> Formatter fooFormatter; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-12-28
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+        <a href="/categories/spring/" class="post-cats__link button">spring</a>
+    
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/2020/12/28/spring-async/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            关于-spring-异步操作的问题
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/12/25/%E8%B5%84%E6%BA%90-%E7%AC%AC%E4%BA%8C%E6%9C%9F/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            资源-第二期
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2020&nbsp;-&nbsp;2020 <a href="/">lianzixin</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
