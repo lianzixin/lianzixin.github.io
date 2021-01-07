@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+
+
+    <!-- meta -->
+
+
+<title>HTTP 发展历程 | lianzixin</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="HTTP 是一个用于传输超文本文档的应用层协议，全名为超文本传输协议 HTTP发展历史如下 HTTP 0.9HTTP 0.9 也被称为单行协议，最初版本的 HTTP 协议并没有版本号，后来它的版本号被定位在 0.9 ，以区分后来的版本。HTTP 0.9 极其简单，请求由单行指令构成，以唯一可用方法 GET 开头，其后跟目标资源的路径。HTTP 0.9 响应内容并不包含 HTTP 头，这意味着只有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP 发展历程">
+<meta property="og:url" content="http://lianzixin.github.io/2021/01/07/interview-http/index.html">
+<meta property="og:site_name" content="lianzixin">
+<meta property="og:description" content="HTTP 是一个用于传输超文本文档的应用层协议，全名为超文本传输协议 HTTP发展历史如下 HTTP 0.9HTTP 0.9 也被称为单行协议，最初版本的 HTTP 协议并没有版本号，后来它的版本号被定位在 0.9 ，以区分后来的版本。HTTP 0.9 极其简单，请求由单行指令构成，以唯一可用方法 GET 开头，其后跟目标资源的路径。HTTP 0.9 响应内容并不包含 HTTP 头，这意味着只有">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-07T12:23:43.000Z">
+<meta property="article:modified_time" content="2021-01-07T12:23:48.153Z">
+<meta property="article:author" content="lianzixin">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">lianzixin</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        HTTP 发展历程
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2021/01/" class="post-meta__date button">
+    2021-01-07
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/interview/" class="button">interview</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <p>HTTP 是一个用于传输超文本文档的应用层协议，全名为超文本传输协议</p>
+<p>HTTP发展历史如下</p>
+<h2 id="HTTP-0-9"><a href="#HTTP-0-9" class="headerlink" title="HTTP 0.9"></a><strong>HTTP 0.9</strong></h2><p><code>HTTP 0.9</code> 也被称为单行协议，最初版本的 <code>HTTP</code> 协议并没有版本号，后来它的版本号被定位在 <code>0.9</code> ，以区分后来的版本。<br><code>HTTP 0.9</code> 极其简单，请求由单行指令构成，以唯一可用方法 <code>GET</code> 开头，其后跟目标资源的路径。<br><code>HTTP 0.9</code> 响应内容并不包含 <code>HTTP</code> 头，这意味着只有 <code>HTML</code> 文件可以传送，无法传输其他类型的文件，也没有<strong>状态码</strong>，出现异常时一个特殊的包含问题描述信息的HTML文件将被响应返回。</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>只有一个请求行，并没有 <code>HTTP</code> 请求头和请求体。</li>
+<li>服务器没有返回头信息，只返回数据信息。</li>
+<li>返回的文件内容是以 <code>ASCII</code> 字符流来传输的，因为都是 <code>HTML</code> 格式的文件，所以使用 <code>ASCII</code> 字节码来传输是最合适的。</li>
+</ul>
+<h2 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP 1.0"></a><strong>HTTP 1.0</strong></h2><p><code>HTTP 1.0</code> 构建了可扩展性，解决了传输<strong>多种类型文件</strong>的需求<br><code>HTTP 1.0</code> 引入了请求头和响应头，它们都是以为 <code>Key-Value</code> 形式保存的，在 <code>HTTP</code> 发送请求时，会带上请求头信息，服务器返回数据时，会先返回响应头信息。</p>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>引入版本号，版本信息会随着每个请求发送，即 <code>HTTP 1.0</code> 被追加到了 <code>GET</code> 行。</li>
+<li>引入请求头，在发起请求时候会通过 <code>HTTP</code> 请求头告诉服务器它期待服务器返回什么类型的文件、采取什么形式的压缩、提供什么语言的文件以及文件的具体编码。</li>
+<li>引入响应头，服务器以请求头中信息准备数据，并以响应头的信息告诉客户端数据采用何种格式返回。</li>
+<li>引入状态码，状态码会在响应开始时发送，使浏览器能了解请求执行成功或失败，并相应调整行为。</li>
+<li>引入了缓存机制，通过状态码与 <code>If-Modified-Since</code> 、 <code>Expires</code> 等控制更新或使用本地缓存。</li>
+<li>引入了 <code>Content-Type</code> 头，使 <code>HTTP</code> 具备了传输除纯文本 <code>HTML</code> 文件以外其他类型文档的能力。</li>
+</ul>
+<h2 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP 1.1"></a><strong>HTTP 1.1</strong></h2><p><code>HTTP 1.1</code> 是标准化的协议，<code>HTTP 1.1</code> 消除了大量歧义内容并引入了多项改进。<br>默认长连接、支持数据分块传输、断点续传功能</p>
+<h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>缓存处理，<code>HTTP 1.1</code> 引入了更多的缓存控制策略，例如Entity tag、If-Unmodified-Since、If-Match、If-None-Match等更多可供选择的缓存头来控制缓存策略。</li>
+<li>在请求头中引入了 <code>range</code>，它允许只请求资源的某一个部分，便于制作<strong>断点续传</strong>功能</li>
+<li>错误通知的管理，在 <code>HTTP 1.1</code> 中新增了 24 个<strong>错误状态码</strong>。</li>
+<li>增加 <code>Host</code> 请求头，能够使不同域名配置在同一个 <code>IP</code> 地址的服务器上。</li>
+<li>支持默认<strong>长连接</strong>，<code>HTTP 1.1</code> 支持长连接，在同一个连接上可以传输多个请求和响应，一般浏览器对于<strong>同一个域名</strong>允许同时建立6个长链接。</li>
+<li>增加管线化技术，允许在第一个应答被完全发送之前就发送第二个请求，以改善队头阻塞问题，但响应的顺序还是会按照请求的顺序返回。</li>
+<li>支持<strong>响应分块</strong>，通过设置 <code>Transfer-Encoding: chunked</code> 进行分块响应，允许响应的数据可以分成多个部分，配合服务端尽早释放缓冲可以获得更快的响应速度。</li>
+</ul>
+<h2 id="HTTP-2-0"><a href="#HTTP-2-0" class="headerlink" title="HTTP 2.0"></a><strong>HTTP 2.0</strong></h2><p>网页愈渐变得的复杂，甚至演变成了独有的应用，媒体的播放量，增进交互的脚本大小也增加了许多，更多的数据通过 <code>HTTP</code> 请求被传输，由此 <code>HTTP 2.0</code> 为网络效率做了大量的优化。<br>主要解决传输问题，将数据量变得更少</p>
+<h3 id="特点-3"><a href="#特点-3" class="headerlink" title="特点"></a>特点</h3><ul>
+<li><strong>二进制</strong>分帧，<code>HTTP 2.0</code> 是二进制协议而不是文本协议，将所有传输的信息分割为更小的消息和帧,并对它们采用二进制格式的编码。</li>
+<li><strong>多路复用</strong>，并行的请求能在同一个链接中处理，在同一域名下所有访问都是从同一个TCP连接中走，HTTP消息被分解为独立的帧，服务端根据标识符和首部将消息重新组装起来，移除了 <code>HTTP 1.1</code> 中顺序和阻塞的约束。</li>
+<li>**压缩 <code>header</code>**，<code>header</code> 在一系列请求中常常是相似的，其移除了重复和传输重复数据的成本。</li>
+<li>服务端推送，服务器可以主动地向客户端推送资源，而无需客户端明确的请求。</li>
+</ul>
+<h2 id="HTTP-存在的安全问题"><a href="#HTTP-存在的安全问题" class="headerlink" title="HTTP 存在的安全问题"></a>HTTP 存在的安全问题</h2><p>由于 <code>HTTP</code> 本身是明文传输的，没有经过任何安全处理。因此会存在流量劫持的问题</p>
+<p>为了解决这个问题，人们提出了 <code>HTTPS</code><br><code>HTTPS</code> 一般理解为 <code>HTTP</code> + <code>SSL/TLS</code>，通过 <code>SSL</code> 证书来验证服务器的身份，并为浏览器和服务器之间的通信进行加密。</p>
+<p>一般通信过程如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br></pre></td><td class="code"><pre><span class="line">1. TCP 握手</span><br><span class="line">client:</span><br><span class="line">TCP</span><br><span class="line">    Sequence number: 0（序列号，此处以相对值为准，实际值为随机数）</span><br><span class="line">    Acknowledgment number：0（确认号）</span><br><span class="line">    Flags：0x002(SYN)</span><br><span class="line">    Len：0</span><br><span class="line"></span><br><span class="line">server：</span><br><span class="line">TCP</span><br><span class="line">    Sequence number：0（序列号，此处以相对值为准，实际值为随机数）</span><br><span class="line">    Acknowledgment number：1（确认号，&#x3D; 对方序列号 + 1）</span><br><span class="line">    Flags：0x012(SYN, ACK)</span><br><span class="line">    Len：0</span><br><span class="line"></span><br><span class="line">client:</span><br><span class="line">TCP</span><br><span class="line">    Sequence number：1（序列号，此处以相对值为准，实际值为随机数）</span><br><span class="line">    Acknowledgment number：1（确认号，&#x3D; 对方序列号 + 1）</span><br><span class="line">    Flags: 0x010(ACK)</span><br><span class="line">    Len： 0</span><br><span class="line">------</span><br><span class="line">2. TLS 握手</span><br><span class="line">client:</span><br><span class="line">TCP</span><br><span class="line">    Sequence number：1（序列号，此处以相对值为准，实际值为随机数）</span><br><span class="line">    Acknowledgment number：1（确认号，&#x3D; 对方序列号 + 1）</span><br><span class="line">    Flags: 0x018(ACK, PSH)</span><br><span class="line">    Len： 216</span><br><span class="line">TLSv1.2</span><br><span class="line">    Content Type：Handshake(22)</span><br><span class="line">    Version：TLS 1.0(0x0301)</span><br><span class="line">    HandShake Protocol</span><br><span class="line">        HandShake Type：Client Hello(1)</span><br><span class="line">        Random：客户端随机数（时间+随机数）</span><br><span class="line">        Cipher Suites Length：32（字节长度）</span><br><span class="line">        Cipher Suites：客户端支持的加密算法</span><br><span class="line">            + Cipher Suite：TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256(0xc02f)</span><br><span class="line">            + ...</span><br><span class="line">        Compression Methods Lenght: 1（字节长度）</span><br><span class="line">        Compression Methods：客户端支持的压缩算法</span><br><span class="line">            + Compression Method：null</span><br><span class="line">        Extensions Length：102（扩展字节长度）</span><br><span class="line">        Extension：server_name(len&#x3D;21)</span><br><span class="line">        Extension：status_request(len&#x3D;5)</span><br><span class="line">        Extension：supported_groups(len&#x3D;10)</span><br><span class="line">        Extension: ec_point_formats(len&#x3D;2)</span><br><span class="line">        Extension: signature_algorithms(len&#x3D;24)（签名算法）</span><br><span class="line">        Extension: renegotiation_info(len&#x3D;1)</span><br><span class="line">        Extension: signed_certificate_timestamp(18)</span><br><span class="line">        Extension: supported_versions(len&#x3D;7)（支持版本号）</span><br><span class="line"></span><br><span class="line">server:</span><br><span class="line">TCP</span><br><span class="line">    Sequence number：1（序列号，此处以相对值为准，实际值为随机数）</span><br><span class="line">    Acknowledgment number：217（确认号，&#x3D; 对方序列号 + Len）</span><br><span class="line">    Flags: 0x018(ACK, PSH)</span><br><span class="line">    Len： 0</span><br><span class="line"></span><br><span class="line">server:</span><br><span class="line">TCP</span><br><span class="line">    Sequence number：1（序列号，此处以相对值为准，实际值为随机数）</span><br><span class="line">    Acknowledgment number：217（确认号，&#x3D; 对方序列号 + Len）</span><br><span class="line">    Flags: 0x018(ACK, PSH)</span><br><span class="line">    Len： 1192</span><br><span class="line">TLSv1.2</span><br><span class="line">    Content Type: Handshake(22)</span><br><span class="line">    Version: TLS 1.2(0x0303)</span><br><span class="line">    Handshake Protocol:</span><br><span class="line">        Handshake Type: Server Hello(2)</span><br><span class="line">        Random：服务端端随机数（时间+随机数）</span><br><span class="line">        Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xc02f)（服务端选择的加密算法）</span><br><span class="line">        Compression Method: null (0)（服务端选择的压缩算法）</span><br><span class="line">        Extensions Length：13</span><br><span class="line">        Extension：renegotiation_info</span><br><span class="line">        Extension：ec_point_formats</span><br><span class="line"></span><br><span class="line">client:</span><br><span class="line">TCP</span><br><span class="line">    Sequence number：217（序列号，此处以相对值为准，实际值为随机数）</span><br><span class="line">    Acknowledgment number：1193（确认号，&#x3D; 对方序列号 + Len）</span><br><span class="line">    Flags: 0x010(ACK)</span><br><span class="line">    Len： 0</span><br><span class="line"></span><br><span class="line">server:</span><br><span class="line">TCP</span><br><span class="line">    Sequence number：1193（序列号，此处以相对值为准，实际值为随机数）</span><br><span class="line">    Acknowledgment number：217（确认号，&#x3D; 对方序列号 + Len）</span><br><span class="line">    Flags: 0x018(ACK,PSH)</span><br><span class="line">    Len： 720</span><br><span class="line">TLS</span><br><span class="line">    TLSv1.2</span><br><span class="line">        Content Type: Handshake(22)</span><br><span class="line">        Version: TLS 1.2(0x0303)</span><br><span class="line">        Handshake Protocol:</span><br><span class="line">            Handshake Type: Certificate(11)</span><br><span class="line">            Length: 2654</span><br><span class="line">            Certificates Length: 2651</span><br><span class="line">            Certificates：</span><br><span class="line">                Certificate</span><br><span class="line">                Certificate</span><br><span class="line">    TLSv1.2</span><br><span class="line">        Content Type: Handshake(22)</span><br><span class="line">        Version: TLS 1.2(0x0303)</span><br><span class="line">        Hanshake Protocol:</span><br><span class="line">            Handshke Type：Server Key Exchange(12)</span><br><span class="line">            Length: 329</span><br><span class="line">            EC Diffie-Hellman Server Params:</span><br><span class="line">                Curve Type: named_curve(0x03)</span><br><span class="line">                Named Curve: secp256r1(0x0017)</span><br><span class="line">                Pubkey Length: 65</span><br><span class="line">                PubKey：公钥</span><br><span class="line">                Signature Algorithm：rsa_pkcs1_sha512(0x0601)</span><br><span class="line">                Signature Length: 256</span><br><span class="line">                Signature: 签名</span><br><span class="line">    TLSv1.2</span><br><span class="line">        Content Type: Handshake(22)</span><br><span class="line">        Version: TLS 1.2(0x0303)</span><br><span class="line">        Hanshake Protocol:</span><br><span class="line">            Handshake Type：Server Hello Done(14)</span><br><span class="line">            Length: 0</span><br><span class="line"></span><br><span class="line">client:</span><br><span class="line">TCP</span><br><span class="line">    Sequence number：217（序列号，此处以相对值为准，实际值为随机数）</span><br><span class="line">    Acknowledgment number：1913（确认号，&#x3D; 对方序列号 + Len）</span><br><span class="line">    Flags: 0x018(ACK,PSH)</span><br><span class="line">    Len: 126</span><br><span class="line">TLS</span><br><span class="line">    TLSv1.2</span><br><span class="line">        Content Type: Handshake(22)</span><br><span class="line">        Version: TLS 1.2(0x0303)</span><br><span class="line">        Handshake Protocol:</span><br><span class="line">            Handshake Type: Client Key Exchange(16)</span><br><span class="line">            EC Diffie-Hellman Client Params</span><br><span class="line">                Pubkey Length: 65</span><br><span class="line">                Pubkey: 公钥</span><br><span class="line">    TLSv1.2</span><br><span class="line">        Content Type: Change Cipher Spec(20)</span><br><span class="line">        Version: TLS 1.2(0x0303)</span><br><span class="line">        Length: 1</span><br><span class="line">    TLSv1.2</span><br><span class="line">        Content Type: Handshake(22)</span><br><span class="line">        Version：TLS 1.2(0x0303)</span><br><span class="line">        Handshake Protocol: Encrypted Handshake Message</span><br><span class="line"></span><br><span class="line">server:</span><br><span class="line">TCP</span><br><span class="line">    Sequence number：1913（序列号，此处以相对值为准，实际值为随机数）</span><br><span class="line">    Acknowledgment number：343（确认号，&#x3D; 对方序列号 + Len）</span><br><span class="line">    Flags: 0x018(ACK,PSH)</span><br><span class="line">    Len: 51</span><br><span class="line">TLS</span><br><span class="line">    TLSv1.2</span><br><span class="line">        Content Type: Change Cipher Spec(20)</span><br><span class="line">        Version: TLS 1.2(0x0303)</span><br><span class="line">        Length: 1</span><br><span class="line">    TLSv1.2</span><br><span class="line">        Content Type: Handshake(22)</span><br><span class="line">        Version: TLS 1.2(0x0303)</span><br><span class="line">        Length: 40</span><br><span class="line">        Handshake Protocol: Encrypted Handshake Message</span><br><span class="line">------</span><br><span class="line">3. 发送加密数据</span><br><span class="line">client：</span><br><span class="line">TCP</span><br><span class="line">    Sequence number：343（序列号，此处以相对值为准，实际值为随机数）</span><br><span class="line">    Acknowledgment number：1964（确认号，&#x3D; 对方序列号 + Len）</span><br><span class="line">    Flags: 0x018(ACK,PSH)</span><br><span class="line">    Len: 416</span><br><span class="line">TLS</span><br><span class="line">    TLSv1.2</span><br><span class="line">        Content Type：Application Data(23)</span><br><span class="line">        Version: TLS 1.2(0x0303)</span><br><span class="line">        Length: 411</span><br><span class="line">        Encrypted Application Data</span><br><span class="line">...</span><br><span class="line">------</span><br><span class="line">4. 三次挥手</span><br><span class="line">client:</span><br><span class="line">TCP</span><br><span class="line">    Sequence number：790（序列号，此处以相对值为准，实际值为随机数）</span><br><span class="line">    Acknowledgment number：3675（确认号，&#x3D; 对方序列号 + Len）</span><br><span class="line">    Flags: 0x011(ACK,FIN)</span><br><span class="line">    Len: 0</span><br><span class="line"></span><br><span class="line">server:</span><br><span class="line">TCP</span><br><span class="line">    Sequence number：3675（序列号，此处以相对值为准，实际值为随机数）</span><br><span class="line">    Acknowledgment number：791（确认号，&#x3D; 对方序列号 + Len）</span><br><span class="line">    Flags: 0x010(ACK,FIN)</span><br><span class="line">    Len: 0</span><br><span class="line"></span><br><span class="line">client:</span><br><span class="line">TCP</span><br><span class="line">    Sequence number：791（序列号，此处以相对值为准，实际值为随机数）</span><br><span class="line">    Acknowledgment number：3676（确认号，&#x3D; 对方序列号 + Len）</span><br><span class="line">    Flags: 0x010(ACK,FIN)</span><br><span class="line">    Len: 0</span><br></pre></td></tr></table></figure>
+
+<p>简要描述以上过程<br><strong>TCP 三次握手</strong></p>
+<ol>
+<li>第一次握手，设置标志位为 SYN，序列号与确认号均为 0</li>
+<li>第二次握手，设置标志位为 SYN、ACK，序列号为 0，确认号为 1</li>
+<li>第三次握手，设置标志位为 ACK，序列号为 1，确认号为 1<br>注意：对于三次握手，需要注意的是对于单 ACK 标志，是不会消耗序列号的，因此下次包可以再次复用序列号</li>
+</ol>
+<p><strong>TLS 握手</strong></p>
+<ol>
+<li>Client Hello (Client -&gt; Server)，此阶段主要向服务端提供参数：<code>客户端版本</code>,<code>客户端随机数</code>,<code>压缩方法列表</code>,<code>对称加密算法列表</code>,<code>扩展列表</code></li>
+<li>Server Hello (Server -&gt; Client)，此阶段主要向客户端提供选择的参数：<code>服务端版本</code>,<code>服务端随机数</code>,<code>对称加密算法</code>,<code>压缩方法</code>,<code>扩展</code>（后三项均从客户端提供的列表进行挑选）</li>
+<li>Server Certificate (Server -&gt; Client)，此阶段服务端向客户端提供证书</li>
+<li>Client Certificate (Client -&gt; Server)，此阶段可选，客户端向服务端提供证书</li>
+<li>Server Key Exchange (Server -&gt; Client)，此阶段只有在客户端无法依据<strong>第三步</strong>的证书进行生成必须密钥时才会进行，使用的临时的 DH/ECDH 密钥协商算法，证书中是不包含这些动态的 DH 信息(DH 参数和 DH 公钥)，所以需要使用 Server Key Exchange 消息传递这些信息。传递的动态 DH 信息需要使用 Server 私钥进行签名加密。</li>
+<li>Server Hello Done (Server -&gt; Client)，服务端向客户端确认完成</li>
+<li>Client Key Exchange (Client -&gt; Server)，此阶段 client 将验证证书，使用之前选择的<code>对称加密算法</code>生成 <code>pre-master-secret</code>.使用服务端的公钥进行加密，随后发送给服务端。（此内容只有服务端才能解密，因此双方现在均拥有，两个随机数+<code>pre-master-secret</code>）（当 Client 使用一个动态的 Diffie-Hellman 指数时，这个消息就会包含 Client 的 Diffie-Hellman 公钥。如果 Client 正在发送一个包含一个静态 DH 指数(例如，它正在进行 fixed_dh Client 认证)的证书时，这个消息必须被发送但必须为空。）</li>
+<li>Client Change Cipher Spec (Client -&gt; Server)，客户端声明准备使用协商好的公共密钥进行加密（公共密钥 = 两个随机数+<code>pre-master-secret</code>)</li>
+<li>Client Handshake Finished (Client -&gt; Server)，客户端握手阶段完成</li>
+<li>Server Change Cipher Spec (Server -&gt; Client)，服务端声明准备使用协商好的公共密钥进行家吗（公共密钥 = 两个随机数+<code>pre-master-secret</code>)</li>
+<li>Server Handshake Finished (Server -&gt; Client)，服务端握手阶段完成</li>
+</ol>
+<p><strong>TCP 四次挥手</strong></p>
+<ol>
+<li>第一次挥手，设置标志位为 ACK,FIN，进入 FIN_WAIT1 状态</li>
+<li>第二次挥手，设置标志位为 ACK，进入 CLOSE_WAIT 状态</li>
+<li>第三次挥手，设置标志位为 FIN，进入 LAST_WAIT 状态（接收到 ACK 为 CLOSED 状态</li>
+<li>第四次挥手，设置标志位为 ACK，进入 TIMEWAIT 状态（2个 RTT 后进入 CLOSED 状态）</li>
+</ol>
+<p>以上过程可辩证观看下面的图，进行对照理解<br><a target="_blank" rel="noopener" href="https://github.com/lianzixin/draw.io.picture/raw/main/https-principle.png">HTTPS 处理过程</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.acunetix.com/blog/articles/establishing-tls-ssl-connection-part-5/">TLS Security 5: Establishing a TLS Connection</a></li>
+<li><a target="_blank" rel="noopener" href="https://halfrost.com/https-begin/">halfrost 的 https 详解</a></li>
+</ul>
+
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2021-01-07
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+        <a href="/categories/interview/" class="post-cats__link button">interview</a>
+    
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/12/29/Spring-%E5%AE%9E%E6%88%98%EF%BC%88%E7%AC%AC%E5%85%AD%E6%9C%9F%EF%BC%89/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            Spring-实战（第六期）
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2020&nbsp;-&nbsp;2021 <a href="/">lianzixin</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
