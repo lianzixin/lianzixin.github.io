@@ -29,15 +29,15 @@
 
     <!-- OpenGraph -->
  
-    <meta name="description" content="Spring 项目项目结构对于 &#x2F;src&#x2F;main&#x2F;java 源代码目录 123456789101112131415161718|_annotation：放置项目自定义注解|_aspect：放置切面代码|_config：放置配置类|_constant：放置常量、枚举等定义   |__consist：存放常量定义   |__enums：存放枚举定义|_controller：放置控制器代码|_filt">
+    <meta name="description" content="Spring 项目项目结构对于 &#x2F;src&#x2F;main&#x2F;java 源代码目录 12345678910111213141516171819|_annotation：放置项目自定义注解|_aspect：放置切面代码|_config：放置配置类|_constant：放置常量、枚举等定义   |__consist：存放常量定义   |__enums：存放枚举定义|_controller：放置控制器代码|_fi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="项目规范推荐">
 <meta property="og:url" content="http://lianzixin.github.io/2020/11/14/%E9%A1%B9%E7%9B%AE%E8%A7%84%E8%8C%83/index.html">
 <meta property="og:site_name" content="lianzixin">
-<meta property="og:description" content="Spring 项目项目结构对于 &#x2F;src&#x2F;main&#x2F;java 源代码目录 123456789101112131415161718|_annotation：放置项目自定义注解|_aspect：放置切面代码|_config：放置配置类|_constant：放置常量、枚举等定义   |__consist：存放常量定义   |__enums：存放枚举定义|_controller：放置控制器代码|_filt">
+<meta property="og:description" content="Spring 项目项目结构对于 &#x2F;src&#x2F;main&#x2F;java 源代码目录 12345678910111213141516171819|_annotation：放置项目自定义注解|_aspect：放置切面代码|_config：放置配置类|_constant：放置常量、枚举等定义   |__consist：存放常量定义   |__enums：存放枚举定义|_controller：放置控制器代码|_fi">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-14T12:11:28.000Z">
-<meta property="article:modified_time" content="2020-12-14T12:11:46.313Z">
+<meta property="article:modified_time" content="2021-01-10T12:57:11.425Z">
 <meta property="article:author" content="lianzixin">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -143,7 +143,7 @@
     <div class="post__header"></div>
     <div class="post__content">
         <h1 id="Spring-项目"><a href="#Spring-项目" class="headerlink" title="Spring 项目"></a>Spring 项目</h1><h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>对于 <code>/src/main/java</code> 源代码目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">|_annotation：放置项目自定义注解</span><br><span class="line">|_aspect：放置切面代码</span><br><span class="line">|_config：放置配置类</span><br><span class="line">|_constant：放置常量、枚举等定义</span><br><span class="line">   |__consist：存放常量定义</span><br><span class="line">   |__enums：存放枚举定义</span><br><span class="line">|_controller：放置控制器代码</span><br><span class="line">|_filter：放置一些过滤、拦截相关的代码</span><br><span class="line">|_repository：放置数据访问层代码接口————JPA</span><br><span class="line">|_mapper：放置数据访问层代码接口————Mybatis</span><br><span class="line">|_schedule：放置定时任务</span><br><span class="line">|_model：放置数据模型代码</span><br><span class="line">   |__entity：放置数据库实体对象定义</span><br><span class="line">   |__dto&#x2F;reqEntity：存放数据传输对象定义 &#x2F; 存放请求对象定义</span><br><span class="line">   |__vo&#x2F;rspEntity：存放显示层对象定义 &#x2F; 存放响应对象定义</span><br><span class="line">|_service：存放业务逻辑接口</span><br><span class="line">   |__impl：存放业务逻辑实际实现</span><br><span class="line">|_utils：放置工具类和辅助代码</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">|_annotation：放置项目自定义注解</span><br><span class="line">|_aspect：放置切面代码</span><br><span class="line">|_config：放置配置类</span><br><span class="line">|_constant：放置常量、枚举等定义</span><br><span class="line">   |__consist：存放常量定义</span><br><span class="line">   |__enums：存放枚举定义</span><br><span class="line">|_controller：放置控制器代码</span><br><span class="line">|_filter：放置一些过滤、拦截相关的代码</span><br><span class="line">|_repository：放置数据访问层代码接口————JPA</span><br><span class="line">   |__spec: 放置数据访问层复杂查询</span><br><span class="line">|_mapper：放置数据访问层代码接口————Mybatis</span><br><span class="line">|_schedule：放置定时任务</span><br><span class="line">|_model：放置数据模型代码</span><br><span class="line">   |__entity：放置数据库实体对象定义</span><br><span class="line">   |__dto&#x2F;reqEntity：存放数据传输对象定义 &#x2F; 存放请求对象定义</span><br><span class="line">   |__vo&#x2F;rspEntity：存放显示层对象定义 &#x2F; 存放响应对象定义</span><br><span class="line">|_service：存放业务逻辑接口</span><br><span class="line">   |__impl：存放业务逻辑实际实现</span><br><span class="line">|_utils：放置工具类和辅助代码</span><br></pre></td></tr></table></figure>
 
 <p>对于 <code>/src/main/resource</code> 里面主要存放静态配置文件和页面静态资源</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">|_mapper：存放mybatis的XML映射文件（如果是mybatis项目）</span><br><span class="line">|_static：存放网页静态资源，比如下面的js&#x2F;css&#x2F;img</span><br><span class="line">   |__js：</span><br><span class="line">   |__css：</span><br><span class="line">   |__img：</span><br><span class="line">   |__font：</span><br><span class="line">   |__等等</span><br><span class="line">|_template：存放网页模板，比如thymeleaf&#x2F;freemarker模板等</span><br><span class="line">   |__header</span><br><span class="line">   |__sidebar</span><br><span class="line">   |__bottom</span><br><span class="line">   |__XXX.html等等</span><br><span class="line">|_application.yml       基本配置文件</span><br><span class="line">|_application-dev.yml   开发环境配置文件</span><br><span class="line">|_application-test.yml  测试环境配置文件</span><br><span class="line">|_application-prod.yml  生产环境配置文件</span><br></pre></td></tr></table></figure>
@@ -160,11 +160,48 @@
 <li>工具文件，命名使用  XXXUtil</li>
 </ul>
 <h1 id="React-项目"><a href="#React-项目" class="headerlink" title="React 项目"></a>React 项目</h1><h2 id="项目结构-1"><a href="#项目结构-1" class="headerlink" title="项目结构"></a>项目结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">|_public：公共目录</span><br><span class="line">|_src：</span><br><span class="line">   |__apis：api 目录</span><br><span class="line">   |__conponents：组件目录</span><br><span class="line">     |_App.tsx 主程序组件</span><br><span class="line">   |__pages：页面目录</span><br><span class="line">     |_index.ts：页面路由数组</span><br><span class="line">   |__utils：额外工具目录</span><br><span class="line">   |_index.js：程序入口</span><br><span class="line">   |_setupProxy.js：代理服务器配置</span><br><span class="line">|_editorconfig：编辑器配置文件</span><br><span class="line">|_eslintrc：eslint 规范</span><br><span class="line">|_.env：环境变量</span><br><span class="line">|_.gitignore</span><br><span class="line">|_.npmrc：npm 源配置</span><br><span class="line">|_.prettierrc.yaml：prettier 配置</span><br><span class="line">|_tsconfig.json：typescirpt 配置</span><br><span class="line">|_package.json：项目配置文件（通过 npm init 生成）</span><br></pre></td></tr></table></figure>
+
+<h2 id="GitHub-Commit-规范"><a href="#GitHub-Commit-规范" class="headerlink" title="GitHub Commit 规范"></a>GitHub Commit 规范</h2><p>Git 每次提交代码，都按照以下规范书写 Commit message，否则不允许提交</p>
+<p><strong>Commit message 的格式</strong><br>其中 Header 是必须的，Body、Footer 可以省略</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</span><br><span class="line">&#x2F;&#x2F; 空一行</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&#x2F;&#x2F; 空一行</span><br><span class="line">&lt;footer&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Header 部分包括三个字段：<code>type</code>,<code>scope</code>,<code>subject</code><br><em>type</em>：用于说明 commit 的类别：</p>
+<ul>
+<li><code>feat</code>：新功能</li>
+<li><code>fix</code>：修复 bug</li>
+<li><code>docs</code>：文档</li>
+<li><code>style</code>：格式</li>
+<li><code>refactor</code>：重构</li>
+<li><code>test</code>：增加测试</li>
+<li><code>chore</code>：构建过程或辅助工具的变动</li>
+</ul>
+<p><em>scope</em>：用于说明 commit 影响的范围<br><em>subject</em>：commit 目的的简短描述</p>
+<p>Body 部分是对本次 commit 的详细描述</p>
+<ul>
+<li>使用第一人称现在时</li>
+<li>说明代码变动的动机，以及与以前行为的对比</li>
+</ul>
+<p>Footer </p>
+<ul>
+<li>说明不兼容的变动</li>
+<li>关闭 Issue</li>
+</ul>
+<p>Revert 当前 commit 用于撤销以前的 commit，则必须以 revert: 开头</p>
+<p><strong>Commitizen</strong><br>撰写合格 Commit message 的工具<br>安装命令：<code>npm install -g commitizen</code><br>支持 Angular 规范：<code>commitizen init cz-convertional-changelog --save --save-exact</code><br>使用命令：<code>git cz</code></p>
+<p><strong>validate-commit-msg</strong><br>用于检查 Node 项目的 Commit message 是否符合格式</p>
+<p><strong>Change log</strong><br>发布新版本时，Change log 可以用脚本自动生成，文档包括以下三部分</p>
+<ul>
+<li>New features</li>
+<li>Bug fixes</li>
+<li>Breaking changes</li>
+</ul>
+<p><code>conventional-changelog</code> 就是生成 Change log 的工具，运行下面的命令即可。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g conventional-changelog</span><br><span class="line"><span class="built_in">cd</span> my-project</span><br><span class="line">conventional-changelog -p angular -i CHANGELOG.<span class="built_in">md</span> -w</span><br></pre></td></tr></table></figure>
     </div>
      
     <div class="post-footer__meta">
     <p>
-        updated at 2020-12-14
+        updated at 2021-01-10
     </p>
 </div> 
     <div class="post-meta__cats">
